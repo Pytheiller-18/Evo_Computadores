@@ -4,14 +4,17 @@
 
 ---
 
-## 🚀 Versión 1.0 (v1.0.0)
+## 🚀 Versiones
 
-Esta entrega corresponde a la **Versión 1 de la Línea del Tiempo**, integrando el recorrido histórico y conceptual de los hitos más representativos de la computación.
+### 📌 Versión 2.0 (v2.0.0) — *Actual*
+- **Fotografía Histórica Real**: Sustitución de los marcadores temporales por imágenes documentales auténticas y diagramas de alta resolución (Wikimedia Commons) para cada uno de los 17 hitos (desde el Ábaco y la Pascalina hasta el Apple M1 y el IBM Q System One).
+- **Consistencia Visual**: Mejoras en la renderización y contraste de imágenes en modo oscuro.
 
-### 📌 Características Principales
-- **+4000 Años de Historia**: Desde los primeros instrumentos mecánicos hasta las tecnologías contemporáneas y cuánticas.
-- **17 Hitos Tecnológicos Clave**: Cada evento cuenta con su descripción, tecnología base, aporte técnico y el cambio de paradigma generado.
-- **Interfaz Interactiva**: Construida con diseño moderno, modo oscuro, fuentes personalizadas y efectos de transición.
+### 📌 Versión 1.0 (v1.0.0)
+- Estructura base de la línea de tiempo interactiva.
+- Síntesis de los 17 hitos tecnológicos clave (+4000 años de historia computacional).
+- Sección de análisis técnico y preguntas reflexivas sobre arquitectura de computadores.
+- Interfaz estilizada con Tailwind CSS y paleta de colores futurista.
 
 ---
 
