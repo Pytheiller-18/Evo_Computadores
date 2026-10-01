@@ -78,7 +78,7 @@ Evo_Computadores/
 │   └── 17_computacion_cuantica.jpg
 ├── .gitignore
 ├── README.md
-└── evoluci_n_de_los_computadores.html
+└── index.html
 ```
 
 ---
@@ -90,7 +90,7 @@ Evo_Computadores/
    git clone https://github.com/Pytheiller-18/Evo_Computadores.git
    ```
 2. **Abrir el archivo**:
-   Abre directamente `evoluci_n_de_los_computadores.html` en cualquier navegador web moderno (Google Chrome, Microsoft Edge, Brave, Mozilla Firefox, Safari).
+   Abre directamente `index.html` en cualquier navegador web moderno (Google Chrome, Microsoft Edge, Brave, Mozilla Firefox, Safari).
 3. **Interactuar con las imágenes**:
    - Haz clic sobre cualquier imagen o en el botón **`[Ampliar]`** para abrir el visor a pantalla completa.
    - Navega usando las flechas de tu teclado `←` / `→` o los botones en pantalla.
