@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea de Tiempo: Evolución de los Computadores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #38bdf8, #818cf8, #c084fc);
+            border-radius: 9999px;
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .timeline-container::before { left: 24px; transform: none; }
+            .timeline-card { width: 100%; padding-left: 64px; }
+            .timeline-dot { left: 24px !important; transform: translateX(-50%) !important; }
+        }
+        .card-content { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-content:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5); }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <header class="relative py-20 px-6 text-center overflow-hidden bg-slate-900 border-b border-slate-800">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-400 via-slate-900 to-slate-900"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-6 tracking-tight">
+                De la Piedra a la Nube Cuántica
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+                Una investigación exhaustiva sobre la evolución de la arquitectura de computadores: identificando las máquinas, tecnologías y saltos de paradigma que externalizaron el procesamiento humano.
+            </p>
+            <div class="mt-8 flex justify-center gap-4 text-sm font-semibold text-slate-300">
+                <span class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700 shadow-sm"><i class="fas fa-clock text-cyan-400 mr-2"></i>+4000 Años de Historia</span>
+                <span class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700 shadow-sm"><i class="fas fa-microchip text-purple-400 mr-2"></i>17 Hitos Clave</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- PRODUCTO 1: LÍNEA DE TIEMPO -->
+        <section id="timeline">
+            <h2 class="text-3xl font-bold text-center mb-16 text-white"><span class="border-b-4 border-cyan-500 pb-2">Línea de Tiempo Tecnológica</span></h2>
+            
+            <div class="relative timeline-container py-10">
+                
+                <!-- EVENTO 1 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/22d3ee?text=El+Ábaco" alt="Ábaco" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">2700 - 2300 a.C.</span>
+                                <i class="fas fa-calculator text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">El Ábaco</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Instrumento manual de cuentas y varillas utilizado para asistir en aritmética.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Mecánica manual (madera y piedra).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Primer sistema formal de registro y cálculo posicional rudimentario.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Externalizó la carga de la memoria temporal humana, estandarizando el cálculo.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Documento "Línea de Tiempo Informática" (Citas 3, 4, 5).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 2 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/22d3ee?text=La+Pascalina" alt="Pascalina" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">1642</span>
+                                <i class="fas fa-cogs text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">La Pascalina</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Calculadora mecánica diseñada por Blaise Pascal.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Mecánica de precisión (engranajes, ruedas metálicas y trinquetes).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Automatizó las operaciones de suma y resta mediante un mecanismo de acarreo automático.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Transición clave; demostró que el razonamiento lógico paso a paso podía emularse por una máquina sin intervención del juicio humano continuo.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Reportes Técnicos Estudiantiles y "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 3 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/22d3ee?text=Máquina+Analítica" alt="Máquina Analítica" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">1837</span>
+                                <i class="fas fa-drafting-compass text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Máquina Analítica (Babbage)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Diseño teórico de la primera máquina de propósito general.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Mecánica a vapor y control por Tarjetas Perforadas (Jacquard).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> División conceptual de la máquina en "Molino" (ALU actual) y "Almacén" (Memoria RAM).</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Sentó las bases teóricas de la arquitectura de computadores modulares y la programación (software).</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> "Línea de Tiempo Informática" (Citas 1, 3, 4, 6).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 4 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/22d3ee?text=Tabuladora+de+Hollerith" alt="Máquina Tabuladora" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">1890</span>
+                                <i class="fas fa-server text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Máquina Tabuladora</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Máquina para contabilizar los datos del censo de EE.UU.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Electromecánica, tarjetas perforadas y circuitos cerrados en mercurio.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Primer sistema automatizado para el procesamiento masivo de datos comerciales y gubernamentales.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Redujo el procesamiento de años a meses. Fundó la empresa que se convertiría en IBM.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Documento "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 5 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-blue-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(96,165,250,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/60a5fa?text=Computadora+Z3" alt="Z3" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-blue-900/50 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-800">1941</span>
+                                <i class="fas fa-toggle-on text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Computadora Z3 (Konrad Zuse)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Primera computadora funcional completamente automática y programable.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Electromecánica (2,300 relés telefónicos).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Aritmética de punto flotante y uso estricto de Lógica Booleana.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Abandono definitivo del lento y pesado sistema decimal en favor del procesamiento binario puro.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> "Línea de Tiempo Informática" (Citas 7, 8).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 6 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-blue-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/60a5fa?text=Colossus" alt="Colossus" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-blue-900/50 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-800">1943 - 1944</span>
+                                <i class="fas fa-lock-open text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Colossus (Criptografía)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Computadora británica en Bletchley Park para romper códigos de cifrado alemanes.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Electrónica pura (1,500 válvulas de vacío) y sensores ópticos (5,000 caracteres/s).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Primer procesamiento digital programable a gran escala del mundo.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Demostró que la electrónica sin partes móviles mecánicas multiplicaba la velocidad de cálculo astronómicamente.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Presentación "Línea del tiempo JMB.pdf" y documento central.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 7 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-indigo-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(129,140,248,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/818cf8?text=Arquitectura+Von+Neumann" alt="Von Neumann" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-indigo-900/50 text-indigo-400 text-xs font-bold px-3 py-1 rounded-full border border-indigo-800">1945</span>
+                                <i class="fas fa-project-diagram text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Arquitectura Von Neumann</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Modelo lógico ("First Draft on EDVAC") para la estructura de computadores.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Arquitectura Teórica Lógica / Diseño de Hardware.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> El concepto de "Programa Almacenado": memoria unificada para datos y código.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Eliminó la necesidad de recablear físicamente la máquina para cada tarea (como pasaba en ENIAC), naciendo el software moderno.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Análisis Técnico - S. Prada / "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 8 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-indigo-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/818cf8?text=ENIAC" alt="ENIAC" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-indigo-900/50 text-indigo-400 text-xs font-bold px-3 py-1 rounded-full border border-indigo-800">1946</span>
+                                <i class="fas fa-bolt text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">ENIAC (1ra Generación)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Primera computadora electrónica y digital de propósito general (EE.UU.).</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Termoiónica: 17,400 tubos de vacío. Consumía 150-200 kW.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Poder de cálculo colosal para su época (5,000 sumas por segundo para tablas balísticas).</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Inició formalmente la Primera Generación, aunque padecía de problemas térmicos severos por usar vacío.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> "Línea del Tiempo NSA" y "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 9 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-violet-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(167,139,250,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/a78bfa?text=El+Transistor" alt="Transistor" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-violet-900/50 text-violet-400 text-xs font-bold px-3 py-1 rounded-full border border-violet-800">1947</span>
+                                <i class="fas fa-microchip text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">El Transistor (2da Generación)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Dispositivo inventado en Bell Labs que modula corriente eléctrica.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Estado sólido (Semiconductores: Germanio/Silicio).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Realiza la misma función lógica de un tubo de vacío, pero sin filamentos calientes ni vacíos frágiles.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Incrementó brutalmente la confiabilidad (MTBF) y redujo el tamaño, iniciando la 2da Generación.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Documentos del Taller ("Análisis Técnico" / "Línea de Tiempo Informática").</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 10 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-violet-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/a78bfa?text=Circuito+Integrado" alt="Circuito Integrado" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-violet-900/50 text-violet-400 text-xs font-bold px-3 py-1 rounded-full border border-violet-800">1958 - 1959</span>
+                                <i class="fas fa-border-all text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">El Circuito Integrado (3ra Gen)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Agrupación de miles de transistores en una placa monolítica.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Litografía Planar y Vaporización sobre oblea de Silicio (Noyce/Kilby).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Eliminó el cableado manual propenso a fallas (la "Tiranía de los Números").</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Miniaturización masiva de los circuitos (Microchips) reduciendo los costos dramáticamente.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Documento "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 11 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(232,121,249,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/e879f9?text=IBM+System/360" alt="IBM System/360" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-fuchsia-900/50 text-fuchsia-400 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-800">1964</span>
+                                <i class="fas fa-building text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">IBM System/360</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Primera familia de ordenadores corporativos compatibles.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Tecnología Lógica Sólida (SLT) e integración a gran escala.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> El software escrito para la máquina más lenta servía sin cambios en la más rápida.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Estandarizó permanentemente el Byte de 8 bits y direccionamiento de 32 bits.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> "Línea de Tiempo.pdf" y documento central.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 12 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/e879f9?text=Intel+4004" alt="Intel 4004" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-fuchsia-900/50 text-fuchsia-400 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-800">1971</span>
+                                <i class="fas fa-microchip text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Intel 4004 (4ta Gen)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Primer microprocesador monolítico comercial del mundo.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Microchip LSI (2,300 transistores pMOS en 10 micrómetros).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Unificó Unidad de Control, ALU y registros lógicos en un único chip de 4 bits.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Inició formalmente la era de los Microcomputadores al condensar el cerebro de la máquina.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Todos los documentos del Taller.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 13 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-pink-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(244,114,182,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/f472b6?text=Altair+8800" alt="Altair 8800" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-pink-900/50 text-pink-400 text-xs font-bold px-3 py-1 rounded-full border border-pink-800">1975</span>
+                                <i class="fas fa-laptop-code text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Altair 8800</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Computador personal en kit para aficionados.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Procesador Intel 8080 (8-bits) y Bus de Expansión S-100.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Arquitectura abierta mediante ranuras que permitió crear hardware de terceros (tarjetas gráficas, etc.).</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Generó el ecosistema donde nació Microsoft (Altair BASIC) y validó el software comercial.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 14 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-pink-400 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/f472b6?text=IBM+PC+5150" alt="IBM PC" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-pink-900/50 text-pink-400 text-xs font-bold px-3 py-1 rounded-full border border-pink-800">1981</span>
+                                <i class="fas fa-desktop text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">IBM PC 5150 y "Clones"</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Estándar de ordenador personal comercial.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Arquitectura abierta x86 (Intel 8088), SO MS-DOS e Ingeniería de Sala Limpia.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Democratizó el hardware, empresas como Compaq clonaron legalmente su BIOS.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Dominio de Windows/x86, la guerra de precios global masificó los computadores en cada escritorio.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Presentación visual y "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 15 -->
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-purple-500 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/a855f7?text=Procesadores+Multi-Core" alt="Multi-Core" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-purple-900/50 text-purple-400 text-xs font-bold px-3 py-1 rounded-full border border-purple-800">2005 - 2006</span>
+                                <i class="fas fa-layer-group text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Procesadores Multi-núcleo</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Arquitecturas que albergan varios procesadores independientes en una misma pastilla.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Paralelismo a nivel de hilos (TLP) en silicio masivo.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Superó el "Muro Térmico" del escalado de Dennard al bajar la frecuencia y repartir el trabajo.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Transición forzosa de la industria del software hacia programación concurrente y en hilos.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Documento "Análisis Técnico".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 16 -->
+                <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-purple-500 z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/a855f7?text=SoC+y+Memoria+Unificada" alt="Apple Silicon" class="w-full h-32 object-cover opacity-80" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-purple-900/50 text-purple-400 text-xs font-bold px-3 py-1 rounded-full border border-purple-800">2020+</span>
+                                <i class="fas fa-brain text-slate-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">SoCs Heterogéneos (UMA)</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> System-on-a-Chip combinando CPU, GPU y aceleradores (NPU) en un solo silicio (Ej. Apple Silicon M).</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Litografía EUV ultra extrema (3nm) y Arquitectura de Memoria Unificada (UMA).</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Eliminación de cuellos de botella de transferencia de RAM, logrando eficiencias de ~10W.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Permite procesar enormes Modelos de Lenguaje de IA Generativa de forma local y privada.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> "Línea de Tiempo Informática".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTO 17 -->
+                <div class="relative flex justify-end md:justify-start w-full timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-500 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(217,70,239,0.8)]"></div>
+                    <div class="w-full md:w-[45%] card-content bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-fuchsia-500/50 overflow-hidden shadow-lg shadow-fuchsia-500/20 relative z-10">
+                        <img src="https://placehold.co/600x200/0f172a/d946ef?text=Computación+Cuántica" alt="Cuántica" class="w-full h-32 object-cover opacity-80 mix-blend-screen" onerror="this.style.display='none'">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-fuchsia-900/50 text-fuchsia-300 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-700 shadow-inner">Actualidad / Futuro</span>
+                                <i class="fas fa-atom text-fuchsia-400 animate-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400 mb-2">Supremacía Cuántica</h3>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li><strong class="text-slate-100">Descripción:</strong> Sistemas informáticos post-silicio operados a niveles subatómicos.</li>
+                                <li><strong class="text-slate-100">Tecnología:</strong> Cúbits controlados, refrigeración criogénica y Superposición/Entrelazamiento Cuántico.</li>
+                                <li><strong class="text-slate-100">Aporte:</strong> Capacidad masiva para evaluar probabilidades múltiples de manera paralela y no lineal.</li>
+                                <li><strong class="text-slate-100">Cambio generado:</strong> Romperá criptografía convencional y resolverá cálculos moleculares exponenciales en minutos.</li>
+                                <li><strong class="text-slate-100">Fuente:</strong> Documento "Análisis Técnico".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PRODUCTO 2: ANÁLISIS OBLIGATORIO -->
+        <section id="analisis" class="mt-20 border-t border-slate-700 pt-16">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white"><span class="border-b-4 border-purple-500 pb-2">Análisis Técnico y Reflexiones</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-lg font-bold text-cyan-400 mb-3">1. ¿Cuál considera que fue uno de los cambios tecnológicos más importantes en la evolución de los computadores? Justifique.</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        El paso del tubo de vacío (termoiónica) al <strong class="text-white">Transistor de estado sólido</strong> y su posterior encapsulamiento en el <strong class="text-white">Circuito Integrado</strong>. Técnicamente, esto representó pasar de una lógica electromecánica térmica (altas fallas, alto consumo, calor) a la física de semiconductores. Esto mejoró el MTBF (Tiempo Medio Entre Fallos) y permitió la miniaturización, haciendo viable empacar la ALU, registros y unidad de control en procesadores pequeños y baratos, posibilitando todas las eras posteriores.
+                    </p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-lg font-bold text-cyan-400 mb-3">2. ¿Cómo ha cambiado la relación entre el tamaño físico de los computadores y su capacidad de procesamiento?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Ha cambiado de manera <strong class="text-white">inversamente proporcional y exponencial</strong>. Históricamente, la ENIAC pesaba 30 toneladas ocupando cuartos enteros para rendir ~5,000 operaciones/segundo. Actualmente, la nanolitografía (gobernada por la Ley de Moore y el escalado de Dennard) nos permite tener chips del tamaño de un sello que ejecutan trillones de operaciones por segundo (TFLOPS). La miniaturización de transistores acerca físicamente los componentes, reduciendo la latencia electrónica dramáticamente.
+                    </p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-lg font-bold text-purple-400 mb-3">3. ¿Qué relación existe entre la evolución de los procesadores y el desarrollo de los computadores actuales?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        El procesador, dictado por la Arquitectura Von Neumann, es el motor subyacente. La evolución desde la palabra rudimentaria de 4-bits (Intel 4004) hasta los anchos de banda paralelos multinúcleo de 64-bits determinó estrictamente la capacidad del sistema para ejecutar software. Al procesar más hilos, permitió la transición de herramientas de terminal de texto a sistemas operativos complejos de multitarea gráfica y experiencias visuales fluidas (smartphones, PCs).
+                    </p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-lg font-bold text-purple-400 mb-3">4. ¿Qué componentes o tecnologías han permitido que los computadores sean más rápidos y eficientes?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Fundamentalmente los materiales <strong class="text-white">semiconductores</strong>, las impresiones por litografía en Silicio, y los procesadores de múltiples núcleos (Multi-Core). Además, tecnologías contemporáneas como memorias <strong class="text-white">DDR5/SSD NVMe</strong> que eliminan cuellos de botella de disco mecánico, e instrucciones de ejecución súper-escalares y coprocesadores de gráficas masivas paralelizables (GPUs).
+                    </p>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 md:col-span-2">
+                    <h4 class="text-lg font-bold text-fuchsia-400 mb-3">5. ¿Qué características de los computadores actuales podrían marcar una nueva etapa en la evolución de la computación?</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Estamos en el umbral de una era <strong class="text-white">Cognitiva y Heterogénea</strong>. Las Unidades de Procesamiento Neuronal (NPUs) integradas en SoCs marcan el adiós a la máquina programada de ejecución estrictamente lineal (software clásico) para abrazar arquitecturas que soportan <strong class="text-white">modelos probabilísticos y de inferencia in-situ</strong> (IA local). Más allá del silicio, la <strong class="text-white">Computación Cuántica</strong> promete el salto fuera del modelo binario de estado definido ("0" y "1") hacia los cúbits entrelazados, abriendo el paso a cálculos optimizados inabarcables para la arquitectura tradicional.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FUENTES BIBLIOGRÁFICAS -->
+        <footer class="mt-16 text-center text-xs text-slate-500 border-t border-slate-800 pt-8 pb-4">
+            <p class="mb-2 font-bold uppercase tracking-wider text-slate-400">Fuentes Bibliográficas Consultadas:</p>
+            <ul class="flex flex-wrap justify-center gap-4">
+                <li>• Hennessy & Patterson: Computer Architecture A Quantitative Approach</li>
+                <li>• Documento "Línea de Tiempo Informática" (Hitos de Historia Computacional)</li>
+                <li>• IEEE Annals of the History of Computing</li>
+                <li>• Referencias estudiantiles: Análisis S. Prada, C. JMB, y B. Quintero et al.</li>
+            </ul>
+        </footer>
+
+    </main>
+
+</body>
+</html>
