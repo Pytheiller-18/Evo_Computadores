@@ -1,30 +1,35 @@
-# 💻 Portafolio Monorepo: Evolución y Arquitectura de Computadores
+# 🚀 Hub Central de Proyectos — Portafolio Académico e Investigaciones
 
-> **Portal Centralizado de Entregas Académicas e Investigaciones** — Un único repositorio estructurado como monorepo / portafolio para alojar todos los talleres, líneas de tiempo y mapas conceptuales del curso, desplegado automáticamente en GitHub Pages.
+> **Portal Centralizado Monorepo de Entregas, Talleres e Investigaciones Técnicas**  
+> Un único repositorio estructurado bajo una arquitectura de monorepo modular para alojar todas las entregas académicas, líneas de tiempo interactivas y mapas conceptuales de arquitectura de computadores, desplegado automáticamente en **GitHub Pages**.
 
----
-
-## 🌐 Portal Principal (Hub de Proyectos)
-
-El archivo `index.html` en la raíz funciona como **portal centralizador (Hub)** con tarjetas visuales (*cards*) interactivas. Cada tarjeta representa un módulo o entrega independiente, permitiendo acceder a todas las actividades mediante un único enlace raíz:
-
-- **Tarjeta 1 — Línea de Tiempo Tecnológica:** `./01-linea-de-tiempo/`
-- **Tarjeta 2 — Mapa Conceptual del Sistema de Computación:** `./02-mapa-conceptual/`
-- **Tarjeta 3 — Próxima Entrega / Taller en Desarrollo:** `./03-siguiente-proyecto/`
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-22c55e?style=for-the-badge&logo=github)](https://Pytheiller-18.github.io/Hub_Central_de_Proyectos/)
+[![Arquitectura](https://img.shields.io/badge/Arquitectura-Monorepo%20Modular-06b6d4?style=for-the-badge)](https://github.com/Pytheiller-18/Hub_Central_de_Proyectos)
+[![Licencia](https://img.shields.io/badge/Uso-Acad%C3%A9mico-6366f1?style=for-the-badge)](#)
 
 ---
 
-## 📂 Estructura del Repositorio
+## 🌐 Portal Principal (Hub Central)
+
+El archivo `index.html` en la raíz funciona como **portal centralizador (Hub)** con interfaz gráfica moderna, oscura y responsiva (*cards* interactivas con efectos de elevación e iluminación ambiental). Cada tarjeta representa un proyecto o entrega independiente, permitiendo acceder y evaluar todo el trabajo desde un único enlace raíz:
+
+- ⏳ **Módulo 1 — Línea de Tiempo Tecnológica:** [`./01-linea-de-tiempo/`](./01-linea-de-tiempo/)
+- 🧠 **Módulo 2 — Mapa Conceptual del Sistema de Computación:** [`./02-mapa-conceptual/`](./02-mapa-conceptual/)
+- 📦 **Módulo 3 — Módulo Base para Futuras Entregas:** [`./03-siguiente-proyecto/`](./03-siguiente-proyecto/)
+
+---
+
+## 📂 Estructura del Proyecto (Monorepo)
 
 ```text
-Evo_Computadores/
+Hub_Proyectos/
 ├── index.html                   <-- Portal principal (Hub con tarjetas y enlaces a cada proyecto)
-├── README.md                    <-- Documentación general del repositorio y guía de uso
+├── README.md                    <-- Documentación exhaustiva del repositorio y guía de uso
 ├── .gitignore                   <-- Reglas de exclusión de Git
 │
 ├── 01-linea-de-tiempo/
 │   ├── index.html               <-- Proyecto de la línea de tiempo con visor modal HD
-│   ├── 01_abaco.png
+│   ├── 01_abaco.png             <-- Activos e ilustraciones de cada hito histórico
 │   ├── 02_pascalina.jpg
 │   ├── 03_maquina_analitica.jpg
 │   ├── 04_tabuladora_hollerith.jpg
@@ -46,20 +51,20 @@ Evo_Computadores/
 │   └── index.html               <-- Mapa conceptual interactivo (Lienzo virtual Pan & Zoom)
 │
 └── 03-siguiente-proyecto/
-    └── index.html               <-- Módulo base extensible para futuras entregas
+    └── index.html               <-- Módulo base extensible para futuras entregas o laboratorios
 ```
 
 ---
 
-## 🚀 Módulos del Portafolio
+## 🚀 Proyectos y Entregas Integradas
 
 ### ⏳ 01. Línea de Tiempo: Evolución de los Computadores (`./01-linea-de-tiempo/`)
-- **Investigación Cronológica Exhaustiva:** Análisis de más de 4.000 años de evolución informática divididos en 17 hitos clave, desde el Ábaco manual hasta la computación cuántica superconductora.
+- **Investigación Cronológica Exhaustiva:** Análisis de más de 4.000 años de evolución informática divididos en **17 hitos clave**, desde el Ábaco manual hasta la computación cuántica superconductora.
 - **Visor Modal Interactivo (Lightbox) HD:** 
-  - Ficha técnica completa de cada máquina, tecnología base, aporte arquitectónico y salto de paradigma.
-  - Almacenamiento 100% local de imágenes optimizadas (hasta 1280px) dentro de su propia subcarpeta mediante rutas relativas (`./08_eniac.jpg`).
-  - Navegación fluida por teclado (`←`, `→`, `Esc`) y botones en pantalla.
-- **Barra de Navegación del Portafolio:** Acceso directo para retornar al menú principal o saltar al siguiente módulo.
+  - Ficha técnica completa de cada máquina: contexto cronológico, tecnología base, aporte arquitectónico y salto de paradigma.
+  - Almacenamiento 100% local de imágenes optimizadas de alta definición dentro de su propia subcarpeta mediante rutas relativas (`./08_eniac.jpg`).
+  - Navegación fluida por teclado (`←`, `→`, `Esc`) y botones táctiles/pantalla.
+- **Barra de Navegación del Portafolio:** Retorno inmediato al Hub Central o salto directo al siguiente proyecto.
 
 #### 🏛️ Los 17 Hitos Históricos
 | # | Hito Histórico | Periodo / Año | Tecnología Base | Aporte Principal |
@@ -88,58 +93,69 @@ Evo_Computadores/
 - **Lienzo Virtual Interactivo:** Canvas dinámico con soporte nativo para arrastre (*drag & pan*) y controles de zoom (`Zoom In`, `Zoom Out`, `Centrar`).
 - **Desglose Estructural Completo:**
   - **Hardware (Soporte Físico):** Procesamiento (CPU, GPU, NPU), Memoria Principal (RAM, ROM, Caché), Almacenamiento Masivo (SSD, HDD), Placa Base y Buses, Periféricos (Entrada, Salida, Mixtos), Soporte de Red y Fuente de Alimentación.
-  - **Software (Soporte Lógico):** Software de Sistema (Sistemas Operativos, Controladores), Utilitarios/Diagnóstico, Herramientas de Programación (Compiladores, IDEs, Interpretes) y Software de Aplicación.
-- **Barra de Herramientas:** Botones integrados para regresar al portal principal o dirigirse a la línea de tiempo.
+  - **Software (Soporte Lógico):** Software de Sistema (Sistemas Operativos, Controladores), Utilitarios/Diagnóstico, Herramientas de Programación (Compiladores, IDEs, Intérpretes) y Software de Aplicación.
+- **Barra de Navegación Rápida:** Acceso instantáneo al Hub Central o a la línea de tiempo.
 
 ---
 
-### 📦 03. Siguiente Proyecto / Módulo Futuro (`./03-siguiente-proyecto/`)
-- Espacio reservado con plantilla visual acorde al sistema de diseño para incorporar futuras actividades o talleres prácticos sin modificar la configuración global del monorepo.
+### 📦 03. Próximo Proyecto / Módulo Futuro (`./03-siguiente-proyecto/`)
+- Módulo base preconfigurado con el sistema de diseño del Hub para incorporar nuevos talleres, informes de laboratorio o proyectos prácticos sin alterar la configuración del monorepo.
 
 ---
 
-## 📝 Convención de Commits de Git
+## 🛠️ Tecnologías y Estándares de Diseño
 
-Para mantener la trazabilidad y organización en el monorepo, a partir de ahora cada commit especifica claramente el módulo o ámbito afectado siguiendo el estándar de **Conventional Commits**:
-
-```bash
-git commit -m "tipo(modulo): breve descripcion del cambio"
-```
-
-### Tipos comunes:
-- `feat`: Nueva funcionalidad o módulo.
-- `fix`: Corrección de errores en código o enlaces.
-- `docs`: Modificaciones en documentación o contenidos informativos.
-- `style`: Mejoras estéticas de diseño, espaciados o CSS.
-- `refactor`: Reorganización de archivos, carpetas o rutas sin alterar la funcionalidad.
-
-### Módulos (scopes):
-- `hub`: Portal principal (`index.html`).
-- `linea-de-tiempo`: Módulo `01-linea-de-tiempo/`.
-- `mapa`: Módulo `02-mapa-conceptual/`.
-- `siguiente-proyecto`: Módulo `03-siguiente-proyecto/`.
-- `repo`: Ajustes globales o generales del repositorio.
-
-#### Ejemplos:
-```bash
-git commit -m "docs(mapa): agregar estructura inicial del mapa conceptual"
-git commit -m "refactor(linea-de-tiempo): migrar imagenes a rutas relativas locales"
-git commit -m "feat(hub): crear menu principal con tarjetas de proyectos"
-git commit -m "docs(repo): actualizar README con documentacion de arquitectura monorepo"
-```
+- **HTML5 Semántico**: Estructura limpia y accesible en todos los módulos.
+- **CSS Moderno & Tailwind CSS**: Diseño responsivo, modo oscuro profundo (`#0b0f19`), paleta HSL balanceada, efectos de cristal (*glassmorphism*) y gradientes sutiles.
+- **JavaScript Vanilla**: Rendimiento máximo, cero dependencias pesadas de compilación, compatible de forma nativa con todos los navegadores.
+- **Rutas Relativas Puras**: Funcionamiento 100% garantizado tanto en entornos locales sin servidor como en servidores estáticos (GitHub Pages).
 
 ---
 
 ## 💻 Visualización y Despliegue
 
 ### 1. En línea (GitHub Pages)
-Visita el enlace oficial del repositorio desplegado:
-👉 **`https://Pytheiller-18.github.io/Evo_Computadores/`**
+Accede directamente al portal en producción:  
+👉 **[https://Pytheiller-18.github.io/Hub_Central_de_Proyectos/](https://Pytheiller-18.github.io/Hub_Central_de_Proyectos/)**
 
-### 2. De forma Local
+### 2. De forma Local (Sin Servidor Requerido)
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/Pytheiller-18/Evo_Computadores.git
+   git clone https://github.com/Pytheiller-18/Hub_Central_de_Proyectos.git Hub_Proyectos
    ```
-2. Abre directamente `index.html` en la raíz con cualquier navegador web moderno (Chrome, Edge, Firefox, Safari).
-3. Todas las rutas son relativas locales, garantizando funcionamiento 100% offline y sin necesidad de configurar un servidor web.
+2. Entra a la carpeta:
+   ```bash
+   cd Hub_Proyectos
+   ```
+3. Abre el archivo `index.html` en tu navegador preferido (Chrome, Firefox, Edge, Brave, Safari).
+
+---
+
+## 📝 Convención de Commits de Git
+
+El proyecto sigue la convención de **Conventional Commits** para mantener un historial limpio, trazable y profesional:
+
+```bash
+git commit -m "tipo(modulo): breve descripcion del cambio"
+```
+
+### Tipos:
+- `feat`: Nueva funcionalidad, módulo o componente interactivo.
+- `fix`: Corrección de errores en código, enlaces o estilos.
+- `docs`: Modificaciones en documentación o contenidos informativos.
+- `style`: Ajustes estéticos, espaciados, tipografías o CSS.
+- `refactor`: Reorganización de archivos, carpetas o rutas sin alterar la funcionalidad.
+
+### Módulos (Scopes):
+- `hub`: Portal principal (`index.html`).
+- `linea-de-tiempo`: Módulo `01-linea-de-tiempo/`.
+- `mapa`: Módulo `02-mapa-conceptual/`.
+- `siguiente-proyecto`: Módulo `03-siguiente-proyecto/`.
+- `repo`: Ajustes globales del repositorio o configuración.
+
+#### Ejemplos:
+```bash
+git commit -m "feat(hub): integrar nuevas tarjetas interactivas de proyectos"
+git commit -m "docs(repo): actualizar documentacion general para Hub Central de Proyectos"
+git commit -m "refactor(linea-de-tiempo): optimizar carga de imagenes locales HD"
+```
