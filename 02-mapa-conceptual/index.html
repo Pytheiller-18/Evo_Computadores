@@ -31,7 +31,7 @@
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid #334155;
-            padding: 8px 18px;
+            padding: 7px 18px;
             border-radius: 999px;
             z-index: 1000;
             display: flex;
@@ -46,7 +46,7 @@
             background: #1e293b;
             color: #38bdf8;
             border: 1px solid #38bdf8;
-            padding: 6px 14px;
+            padding: 5px 13px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
@@ -61,71 +61,102 @@
         .btn:hover { background: #38bdf8; color: #0f172a; }
         .btn-purple { border-color: #a855f7; color: #c084fc; }
         .btn-purple:hover { background: #a855f7; color: #fff; }
-        .separator { width: 1px; height: 22px; background: #334155; }
+        .separator { width: 1px; height: 20px; background: #334155; }
 
-        /* ── PANEL DE LEYENDA ────────────────────────────────── */
-        #legend {
+        /* ── PANELES FLOTANTES ENCOGIBLES (EXPANDEN AL PASAR EL MOUSE) ── */
+        .collapsible-panel {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(15, 23, 42, 0.94);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 12px 18px;
             z-index: 1000;
-            font-size: 11px;
-            color: #94a3b8;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.55);
-            line-height: 1.8;
-            max-width: 310px;
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid #334155;
+            border-radius: 999px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            cursor: pointer;
         }
-        #legend .legend-title {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #38bdf8;
-            margin-bottom: 6px;
+
+        /* Cabecera compacta visible siempre */
+        .panel-pill {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #cbd5e1;
+            white-space: nowrap;
+            user-select: none;
+            height: 38px;
         }
-        #legend .legend-row { display: flex; align-items: center; gap: 8px; }
-        #legend .badge-pill {
+        .panel-pill .pill-icon {
+            font-size: 13px;
+            color: #38bdf8;
+        }
+        .panel-pill .pill-arrow {
+            font-size: 10px;
+            color: #64748b;
+            margin-left: 6px;
+            transition: transform 0.3s;
+        }
+
+        /* Contenido oculto que se despliega al hover */
+        .panel-drawer {
+            max-height: 0;
+            opacity: 0;
+            padding: 0 18px;
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, padding 0.35s ease;
+            font-size: 11px;
+            line-height: 1.7;
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
+        /* Estado al pasar el cursor (Hover) */
+        .collapsible-panel:hover {
+            border-radius: 14px;
+            border-color: #475569;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+        .collapsible-panel:hover .pill-arrow {
+            transform: rotate(180deg);
+            color: #38bdf8;
+        }
+        .collapsible-panel:hover .panel-drawer {
+            max-height: 360px;
+            opacity: 1;
+            padding: 0 18px 14px 18px;
+            pointer-events: auto;
+        }
+
+        /* Posiciones específicas */
+        #legend-panel {
+            bottom: 20px;
+            left: 20px;
+            max-width: 320px;
+        }
+        #hint-panel {
+            bottom: 20px;
+            right: 20px;
+            max-width: 300px;
+        }
+
+        /* Badges dentro de la leyenda */
+        .badge-pill {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 18px;
-            height: 18px;
+            width: 17px;
+            height: 17px;
             border-radius: 4px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 800;
             flex-shrink: 0;
         }
         .badge-pill-f { background: #0ea5e9; color: #fff; }
         .badge-pill-r { background: #a855f7; color: #fff; }
-        .badge-pill-info { background: #334155; color: #38bdf8; }
-
-        /* ── PANEL DE ATAJOS / GESTOS ────────────────────────── */
-        #hint {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 12px 18px;
-            z-index: 1000;
-            font-size: 11px;
-            color: #94a3b8;
-            line-height: 1.9;
-        }
-        #hint .hint-row { display: flex; align-items: center; gap: 8px; }
-        #hint .icon { width: 20px; text-align: center; color: #38bdf8; font-size: 12px; }
 
         /* ── LIENZO INTERACTIVO ──────────────────────────────── */
         #canvas-container {
@@ -145,7 +176,7 @@
             top: 0;
             left: 0;
             transform-origin: 0 0;
-            padding: 110px 100px 140px 100px;
+            padding: 100px 80px 140px 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -153,7 +184,7 @@
             min-width: max-content;
         }
 
-        /* ── ESTRUCTURA DE ÁRBOL Y LÍNEAS GUÍA ───────────────── */
+        /* ── ESTRUCTURA DE ÁRBOL Y CONECTORES ────────────────── */
         .tree-col {
             display: flex;
             flex-direction: column;
@@ -183,13 +214,13 @@
             z-index: 10;
         }
 
-        /* Fila horizontal continua para hermanos */
+        /* Fila horizontal continua */
         .tree-row {
             display: flex;
             align-items: flex-start;
             justify-content: center;
             position: relative;
-            gap: 0; /* Sin espacio para que las líneas horizontales se toquen sin cortes */
+            gap: 0;
         }
 
         /* Cada rama hija */
@@ -198,7 +229,7 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 28px 14px 0 14px;
+            padding: 26px 12px 0 12px;
         }
 
         /* Barra horizontal continua de conexión entre hermanos */
@@ -235,7 +266,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 2px;
-            height: 28px;
+            height: 26px;
             background: #475569;
         }
 
@@ -243,11 +274,11 @@
         .node-root {
             background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
             color: white;
-            padding: 16px 52px;
-            border-radius: 16px;
-            font-size: 22px;
+            padding: 14px 48px;
+            border-radius: 14px;
+            font-size: 20px;
             font-weight: 800;
-            box-shadow: 0 0 40px rgba(14,165,233,0.35), 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 0 35px rgba(14,165,233,0.3), 0 8px 24px rgba(0,0,0,0.5);
             border: 2px solid rgba(186,230,253,0.5);
             text-align: center;
             letter-spacing: 0.04em;
@@ -259,12 +290,12 @@
             background: linear-gradient(180deg, #082f49 0%, #0c4a6e 100%);
             border: 2px solid #38bdf8;
             color: #e0f2fe;
-            padding: 14px 44px;
+            padding: 12px 40px;
             border-radius: 12px;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 800;
             text-align: center;
-            box-shadow: 0 0 25px rgba(56,189,248,0.25);
+            box-shadow: 0 0 22px rgba(56,189,248,0.22);
             position: relative;
             z-index: 10;
         }
@@ -273,12 +304,12 @@
             background: linear-gradient(180deg, #3b0764 0%, #581c87 100%);
             border: 2px solid #c084fc;
             color: #faf5ff;
-            padding: 14px 44px;
+            padding: 12px 40px;
             border-radius: 12px;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 800;
             text-align: center;
-            box-shadow: 0 0 25px rgba(192,132,252,0.25);
+            box-shadow: 0 0 22px rgba(192,132,252,0.22);
             position: relative;
             z-index: 10;
         }
@@ -287,7 +318,7 @@
             font-size: 11px;
             font-weight: 500;
             color: #bae6fd;
-            margin-top: 4px;
+            margin-top: 3px;
             letter-spacing: 0.02em;
         }
         .node-subtitle-sw {
@@ -298,9 +329,9 @@
         .category-card-header {
             background: #0f172a;
             border-radius: 10px;
-            padding: 10px 14px;
+            padding: 9px 16px;
             border: 1px solid #334155;
-            width: 275px;
+            width: 250px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             position: relative;
@@ -311,19 +342,13 @@
             font-weight: 800;
             letter-spacing: 0.02em;
         }
-        .category-card-desc {
-            font-size: 10px;
-            color: #94a3b8;
-            margin-top: 3px;
-            line-height: 1.35;
-        }
 
-        /* ── CADENA VERTICAL DE TARJETAS CONECTADAS ────────────── */
+        /* ── CADENA VERTICAL DE TARJETAS LIMPIAS ──────────────── */
         .card-stack {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 275px;
+            width: 250px;
         }
 
         /* Conector entre tarjetas de la cadena */
@@ -332,7 +357,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 18px;
+            height: 14px;
             position: relative;
             width: 100%;
         }
@@ -340,128 +365,173 @@
             width: 2px;
             height: 100%;
             background: var(--link-color, #475569);
-            opacity: 0.65;
+            opacity: 0.6;
         }
         .card-connector-link .junction-dot {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: var(--link-color, #38bdf8);
             box-shadow: 0 0 6px var(--link-color, #38bdf8);
         }
 
-        /* ── SUBGRUPOS (Entrada, Salida, Mixtos) ──────────────── */
-        .subgroup-pill {
-            background: #1e1b4b;
-            border: 1px solid #6366f1;
-            color: #c7d2fe;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            text-align: center;
-            width: 100%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        /* ── DISEÑO DE TARJETA DE COMPONENTE ─────────────────── */
-        .component-card {
+        /* ── TARJETA COMPACTA Y ELEGANTE (SIN CARGA VISUAL) ──── */
+        .node-card {
             background: #1e293b;
-            border-left: 4px solid;
-            padding: 11px 13px;
+            border: 1px solid #334155;
+            border-left: 4px solid var(--card-color, #38bdf8);
+            padding: 9px 12px;
             border-radius: 0 8px 8px 0;
             width: 100%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-            transition: transform 0.18s, box-shadow 0.18s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             text-align: left;
-        }
-        .component-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.45);
-        }
-
-        .card-header-line {
+            cursor: pointer;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
-            gap: 6px;
+            gap: 8px;
         }
-        .card-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #f8fafc;
-            line-height: 1.3;
-        }
-        .card-tag {
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 2px 6px;
-            border-radius: 4px;
-            white-space: nowrap;
-            flex-shrink: 0;
+        .node-card:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 12px var(--card-color-alpha, rgba(56, 189, 248, 0.25));
+            border-color: var(--card-color, #38bdf8);
+            background: #243248;
         }
 
-        /* Recuadro aclaratorio para acrónimos y términos técnicos */
-        .card-meaning {
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 4px;
-            padding: 5px 8px;
-            margin: 6px 0;
-            font-size: 10px;
-            color: #7dd3fc;
+        .node-card-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #f1f5f9;
             line-height: 1.35;
         }
-        .card-meaning-sw {
-            color: #e9d5ff;
-            border-color: rgba(192, 132, 252, 0.3);
+
+        .node-card-btn-hint {
+            font-size: 10px;
+            color: #64748b;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: color 0.18s;
+        }
+        .node-card:hover .node-card-btn-hint {
+            color: var(--card-color, #38bdf8);
         }
 
-        .card-f {
+        /* ── MODAL DE DETALLES PROFUNDOS (AL HACER CLIC) ──────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+            padding: 24px;
+            transform: scale(0.95) translateY(10px);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+        .modal-close-btn:hover {
+            background: #ef4444;
+            color: #ffffff;
+            border-color: #ef4444;
+        }
+
+        .modal-cat-badge {
             font-size: 11px;
-            color: #cbd5e1;
-            line-height: 1.4;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 8px;
+            letter-spacing: 0.03em;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #f8fafc;
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .modal-meaning-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #38bdf840;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            color: #7dd3fc;
+            line-height: 1.45;
+        }
+
+        .modal-section {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+        .modal-section-title {
+            font-size: 12px;
+            font-weight: 800;
             margin-bottom: 4px;
             display: flex;
-            align-items: flex-start;
-            gap: 5px;
+            align-items: center;
+            gap: 6px;
         }
-        .card-r {
-            font-size: 11px;
-            color: #94a3b8;
-            line-height: 1.4;
-            display: flex;
-            align-items: flex-start;
-            gap: 5px;
-        }
-        .badge-f {
-            background: #0284c7;
-            color: #fff;
-            font-size: 9px;
-            font-weight: 800;
-            padding: 1px 4px;
-            border-radius: 3px;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        .badge-r {
-            background: #7c3aed;
-            color: #fff;
-            font-size: 9px;
-            font-weight: 800;
-            padding: 1px 4px;
-            border-radius: 3px;
-            flex-shrink: 0;
-            margin-top: 1px;
+        .modal-section-desc {
+            font-size: 12px;
+            color: #cbd5e1;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -476,58 +546,127 @@
         <i class="fas fa-history"></i> Línea de Tiempo
     </a>
     <div class="separator"></div>
-    <span style="font-size:12px; font-weight:700; color:#fff; white-space:nowrap;">💻 Mapa Conceptual Depurado</span>
+    <span style="font-size:12px; font-weight:700; color:#fff; white-space:nowrap;">💻 Mapa Conceptual</span>
     <div class="separator"></div>
     <button class="btn" onclick="zoomAt(0.12)"><i class="fas fa-search-plus"></i> Zoom +</button>
     <button class="btn" onclick="zoomAt(-0.12)"><i class="fas fa-search-minus"></i> Zoom −</button>
     <button class="btn" onclick="resetView()"><i class="fas fa-compress-arrows-alt"></i> Centrar</button>
 </div>
 
-<!-- ══ LEYENDA PEDAGÓGICA ════════════════════════════════════════════════ -->
-<div id="legend">
-    <div class="legend-title"><i class="fas fa-info-circle"></i> Leyenda y Convenciones</div>
-    <div class="legend-row">
-        <span class="badge-pill badge-pill-f">F</span>
-        <span><strong>Función:</strong> Qué hace el componente en el sistema</span>
+<!-- ══ PANEL ENCOGIBLE: LEYENDA (EXPANDE AL HOVER) ═══════════════════════ -->
+<div id="legend-panel" class="collapsible-panel">
+    <div class="panel-pill">
+        <i class="fas fa-info-circle pill-icon"></i>
+        <span>Leyenda y Convención</span>
+        <i class="fas fa-chevron-up pill-arrow"></i>
     </div>
-    <div class="legend-row">
-        <span class="badge-pill badge-pill-r">R</span>
-        <span><strong>Relación:</strong> Cómo interactúa con los demás</span>
-    </div>
-    <div class="legend-row">
-        <span class="badge-pill badge-pill-info"><i class="fas fa-lightbulb text-xs"></i></span>
-        <span><strong>Recuadro técnico:</strong> Significado de siglas y términos (ALU, RAM, etc.)</span>
-    </div>
-    <div style="margin-top:8px; padding-top:8px; border-top:1px solid #1e293b; display:flex; flex-direction:column; gap:4px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-            <span style="width:10px; height:10px; border-radius:50%; background:#38bdf8; display:inline-block;"></span>
-            <span style="color:#e2e8f0; font-weight:600;">Hardware</span> — Soporte Físico y Tangible
+    <div class="panel-drawer">
+        <div style="font-weight: 700; color: #f8fafc; margin-bottom: 6px; font-size: 11px;">Estructura de la información:</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <span class="badge-pill badge-pill-f">F</span>
+            <span><strong>Función:</strong> Qué labor desempeña el componente.</span>
         </div>
-        <div style="display:flex; align-items:center; gap:8px;">
-            <span style="width:10px; height:10px; border-radius:50%; background:#c084fc; display:inline-block;"></span>
-            <span style="color:#e2e8f0; font-weight:600;">Software</span> — Capas Lógicas y Programas
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span class="badge-pill badge-pill-r">R</span>
+            <span><strong>Relación:</strong> Cómo interactúa con los demás componentes.</span>
+        </div>
+        <div style="padding-top:6px; border-top:1px solid #334155; display:flex; flex-direction:column; gap:4px;">
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="width:9px; height:9px; border-radius:50%; background:#38bdf8;"></span>
+                <span><strong>Hardware:</strong> Componentes físicos tangibles.</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="width:9px; height:9px; border-radius:50%; background:#c084fc;"></span>
+                <span><strong>Software:</strong> Capas lógicas y programas.</span>
+            </div>
+            <div style="margin-top:4px; font-size:10px; color:#38bdf8;">
+                <i class="fas fa-hand-pointer mr-1"></i> <em>Haz clic en cualquier tarjeta del mapa para ver sus detalles.</em>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- ══ ATAJOS DE NAVEGACIÓN ═════════════════════════════════════════════ -->
-<div id="hint">
-    <div class="hint-row"><span class="icon"><i class="fas fa-hand-paper"></i></span> Clic + arrastrar → Mover mapa</div>
-    <div class="hint-row"><span class="icon"><i class="fas fa-arrows-alt"></i></span> 2 dedos deslizar → Mover mapa</div>
-    <div class="hint-row"><span class="icon"><i class="fas fa-search-plus"></i></span> Gesto Pinch → Zoom in/out</div>
-    <div class="hint-row"><span class="icon"><i class="fas fa-mouse"></i></span> Ctrl + rueda → Zoom in/out</div>
+<!-- ══ PANEL ENCOGIBLE: CONTROLES (EXPANDE AL HOVER) ═════════════════════ -->
+<div id="hint-panel" class="collapsible-panel">
+    <div class="panel-pill">
+        <i class="fas fa-mouse pill-icon"></i>
+        <span>Controles de Navegación</span>
+        <i class="fas fa-chevron-up pill-arrow"></i>
+    </div>
+    <div class="panel-drawer">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+            <i class="fas fa-hand-paper text-sky-400 w-4 text-center"></i>
+            <span><strong>Clic + arrastrar:</strong> Mover el mapa</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+            <i class="fas fa-arrows-alt text-sky-400 w-4 text-center"></i>
+            <span><strong>2 dedos (Touchpad):</strong> Mover el mapa suavemente</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+            <i class="fas fa-search-plus text-sky-400 w-4 text-center"></i>
+            <span><strong>Pellizco / Ctrl + Rueda:</strong> Ampliar / Reducir zoom</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+            <i class="fas fa-compress-arrows-alt text-sky-400 w-4 text-center"></i>
+            <span><strong>Botón Centrar:</strong> Reajusta la vista a la pantalla</span>
+        </div>
+    </div>
 </div>
 
-<!-- ══ CONTENEDOR PRINCIPAL ══════════════════════════════════════════════ -->
+<!-- ══ MODAL DE DETALLES PROFUNDOS (INTERACTIVO AL HACER CLIC) ════════════ -->
+<div id="detail-modal" class="modal-overlay" onclick="handleBackdropClick(event)">
+    <div class="modal-box" id="modal-box">
+        <button class="modal-close-btn" onclick="closeDetailModal()">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div id="modal-badge-container">
+            <span class="modal-cat-badge" id="modal-cat-badge">Categoría</span>
+        </div>
+
+        <h2 class="modal-title" id="modal-title">Nombre del Componente</h2>
+
+        <div class="modal-meaning-box" id="modal-meaning-box">
+            <div class="flex items-center gap-2 mb-1 font-bold text-xs">
+                <i class="fas fa-lightbulb"></i> <span>SIGNIFICADO / CONCEPTO CLAVE:</span>
+            </div>
+            <div id="modal-meaning-text">...</div>
+        </div>
+
+        <div class="modal-section" style="border-left-color: #0ea5e9;">
+            <div class="modal-section-title" style="color: #38bdf8;">
+                <span class="badge-pill badge-pill-f">F</span>
+                <span>Función en el Sistema</span>
+            </div>
+            <div class="modal-section-desc" id="modal-func-text">...</div>
+        </div>
+
+        <div class="modal-section" style="border-left-color: #a855f7;">
+            <div class="modal-section-title" style="color: #c084fc;">
+                <span class="badge-pill badge-pill-r">R</span>
+                <span>Relación con otros Componentes</span>
+            </div>
+            <div class="modal-section-desc" id="modal-rel-text">...</div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <button class="btn" style="padding: 6px 20px;" onclick="closeDetailModal()">
+                Entendido / Cerrar
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ══ LIENZO CANVAS ═════════════════════════════════════════════════════ -->
 <div id="canvas-container">
     <div id="map-wrapper">
-        <!-- Generado dinámicamente -->
+        <!-- Renderizado con JavaScript -->
     </div>
 </div>
 
 <script>
 /* ═══════════════════════════════════════════════════
-   DATOS COMPLETAMENTE DEPURADOS, SIN REPETICIÓN Y CON EXPLICACIÓN
+   DATOS COMPLETAMENTE DEPURADOS, SIN REPETICIÓN Y CON DETALLES
 ═══════════════════════════════════════════════════ */
 const mapData = {
     hardware: {
@@ -539,36 +678,31 @@ const mapData = {
         categories: [
             {
                 id: 'procesamiento',
-                title: '1. Unidad de Procesamiento',
-                desc: 'El cerebro: interpreta instrucciones, ejecuta cálculos y coordina los circuitos',
+                title: '1. Procesamiento',
                 relation: 'procesa y coordina →',
                 color: '#0ea5e9',
                 nodes: [
                     {
                         name: 'CPU / Microprocesador',
-                        meaning: 'CPU (Central Processing Unit): Chip principal que ejecuta los programas del computador',
-                        clasif: 'Procesador Principal',
+                        meaning: 'CPU (Central Processing Unit): Chip principal que ejecuta las instrucciones del software y coordina todo el computador.',
                         func: 'Lee, decodifica y ejecuta las instrucciones del sistema operativo y aplicaciones.',
                         rel: 'Se apoya en la memoria RAM para leer datos y en la Placa Base para conectarse.'
                     },
                     {
                         name: 'Unidad de Control (UC)',
-                        meaning: 'UC: Circuito interno que organiza el flujo de trabajo y dirige al procesador',
-                        clasif: 'Subcomponente CPU',
+                        meaning: 'UC: Circuito interno que organiza el flujo de trabajo, busca instrucciones en memoria y dirige al procesador.',
                         func: 'Busca instrucciones en memoria, las interpreta y envía señales de control a todo el chip.',
                         rel: 'Le ordena a la ALU qué operación hacer y administra los Registros internos.'
                     },
                     {
                         name: 'Unidad Aritmética Lógica (ALU)',
-                        meaning: 'ALU (Arithmetic Logic Unit): Realiza cálculos matemáticos (+, -, *, /) y comparaciones lógicas (sí/no)',
-                        clasif: 'Subcomponente CPU',
+                        meaning: 'ALU (Arithmetic Logic Unit): Realiza cálculos matemáticos (+, -, *, /) y comparaciones lógicas (sí/no).',
                         func: 'Ejecuta sumas, restas, multiplicaciones y operaciones lógicas (AND, OR, NOT).',
                         rel: 'Recibe los números directamente de los Registros y devuelve el resultado a ellos.'
                     },
                     {
                         name: 'Registros Internos',
-                        meaning: 'Memoria diminuta de máxima velocidad ubicada dentro del propio silicio de la CPU',
-                        clasif: 'Memoria Interna CPU',
+                        meaning: 'Memoria diminuta de máxima velocidad ubicada dentro del propio procesador.',
                         func: 'Guarda temporalmente los datos e instrucciones que se están procesando en ese microsegundo.',
                         rel: 'Alimenta de inmediato a la ALU y retiene las direcciones de la próxima instrucción.'
                     }
@@ -577,28 +711,24 @@ const mapData = {
             {
                 id: 'memoria',
                 title: '2. Memoria Primaria',
-                desc: 'Espacio de trabajo veloz indispensable para que la CPU cargue programas activos',
                 relation: 'almacena temporalmente →',
                 color: '#10b981',
                 nodes: [
                     {
                         name: 'Memoria RAM',
-                        meaning: 'RAM (Random Access Memory): Memoria volátil de acceso ultrarrápido; se vacía al apagar',
-                        clasif: 'Memoria Volátil',
+                        meaning: 'RAM (Random Access Memory): Memoria volátil de acceso ultrarrápido; se vacía al apagar el equipo.',
                         func: 'Mantiene cargados el Sistema Operativo y los programas mientras están en uso activo.',
                         rel: 'Suministra los datos de trabajo a la CPU a gran velocidad; los recibe del disco.'
                     },
                     {
                         name: 'Memoria ROM',
-                        meaning: 'ROM (Read Only Memory): Memoria no volátil de solo lectura permanente de fábrica',
-                        clasif: 'Memoria Permanente',
+                        meaning: 'ROM (Read Only Memory): Memoria no volátil de solo lectura permanente grabada de fábrica.',
                         func: 'Contiene las instrucciones de arranque básico indispensables para iniciar el equipo.',
                         rel: 'Permite a la placa base encender y localizar el disco donde está el Sistema Operativo.'
                     },
                     {
                         name: 'Memoria Caché (L1 / L2 / L3)',
-                        meaning: 'Memoria ultraveloz escalonada entre la CPU y la RAM para acelerar accesos repetitivos',
-                        clasif: 'Memoria Intermedia',
+                        meaning: 'Memoria ultraveloz escalonada entre la CPU y la RAM para acelerar accesos repetitivos.',
                         func: 'Duplica datos de uso frecuente para que la CPU no sufra esperas lentas hacia la RAM.',
                         rel: 'Reduce los cuellos de botella multiplicando el rendimiento efectivo del procesador.'
                     }
@@ -607,28 +737,24 @@ const mapData = {
             {
                 id: 'almacenamiento',
                 title: '3. Almacenamiento Secundario',
-                desc: 'Guarda permanentemente archivos, fotos y programas sin perderse al apagar la PC',
                 relation: 'conserva permanentemente →',
                 color: '#f59e0b',
                 nodes: [
                     {
                         name: 'Unidad de Estado Sólido (SSD)',
-                        meaning: 'SSD (Solid State Drive): Almacenamiento veloz mediante chips de memoria flash sin piezas móviles',
-                        clasif: 'Memoria Flash Rápida',
+                        meaning: 'SSD (Solid State Drive): Almacenamiento veloz mediante chips de memoria flash sin piezas mecánicas móviles.',
                         func: 'Arranca el sistema operativo y abre programas de manera prácticamente instantánea.',
                         rel: 'Conectado a la Placa Base mediante interfaz M.2 / NVMe / SATA de alta tasa de datos.'
                     },
                     {
                         name: 'Disco Duro Mecánico (HDD)',
-                        meaning: 'HDD (Hard Disk Drive): Almacenamiento masivo tradicional mediante platos magnéticos giratorios',
-                        clasif: 'Almacenamiento Magnético',
+                        meaning: 'HDD (Hard Disk Drive): Almacenamiento masivo tradicional mediante platos magnéticos giratorios.',
                         func: 'Guarda grandes volúmenes de datos pesados y respaldos con gran capacidad a bajo costo.',
                         rel: 'Conectado vía cable SATA; transfiere los archivos a la memoria RAM cuando se abren.'
                     },
                     {
                         name: 'Memorias Extraíbles (USB / SD)',
-                        meaning: 'Dispositivos portátiles externos para transportar información entre diferentes computadores',
-                        clasif: 'Almacenamiento Portátil',
+                        meaning: 'Dispositivos portátiles externos para transportar información entre diferentes computadores.',
                         func: 'Permite respaldar, compartir y mover archivos de manera cómoda de un lugar a otro.',
                         rel: 'Se conecta a los puertos externos y es administrado por el Sistema Operativo.'
                     }
@@ -637,42 +763,36 @@ const mapData = {
             {
                 id: 'placabase',
                 title: '4. Placa Base e Interconexión',
-                desc: 'La columna vertebral que sostiene y comunica eléctricamente a todos los circuitos',
                 relation: 'interconecta y distribuye →',
                 color: '#f97316',
                 nodes: [
                     {
                         name: 'Tarjeta Madre (Motherboard)',
-                        meaning: 'Circuito impreso central que aloja la CPU, memorias, ranuras y conectores',
-                        clasif: 'Plataforma Troncal',
+                        meaning: 'Circuito impreso central que aloja la CPU, memorias, ranuras y conectores.',
                         func: 'Provee las líneas de cobre (buses) que comunican a todos los elementos del computador.',
                         rel: 'Sostiene directamente el procesador, las tarjetas de memoria y recibe la energía.'
                     },
                     {
                         name: 'Chipset (Controlador Central)',
-                        meaning: 'Conjunto de chips integrados en la placa que dirigen el tráfico de datos entre piezas',
-                        clasif: 'Gestor de Tráfico',
+                        meaning: 'Conjunto de chips integrados en la placa que dirigen el tráfico de datos entre piezas.',
                         func: 'Coordina la comunicación entre la CPU, las ranuras de video, discos y puertos externos.',
                         rel: 'Determina la compatibilidad de procesadores y memorias que admite la placa base.'
                     },
                     {
                         name: 'Ranuras de Expansión (PCIe)',
-                        meaning: 'PCIe (PCI Express): Ranuras de altísima velocidad para conectar tarjetas complementarias',
-                        clasif: 'Ranuras de Expansión',
+                        meaning: 'PCIe (PCI Express): Ranuras de altísima velocidad para conectar tarjetas complementarias (video, sonido, etc.).',
                         func: 'Permite instalar tarjetas gráficas dedicadas (GPU), capturadoras y adaptadores de red.',
                         rel: 'Comunican directamente las tarjetas añadidas con las líneas de datos de la CPU.'
                     },
                     {
                         name: 'Ranuras de Memoria (DIMM)',
-                        meaning: 'DIMM: Zócalos alargados diseñados específicamente para encajar los módulos de RAM',
-                        clasif: 'Zócalo de Memoria',
+                        meaning: 'DIMM: Zócalos alargados diseñados específicamente para encajar los módulos de memoria RAM.',
                         func: 'Sujetan firmemente las memorias RAM y las conectan con el canal de memoria.',
                         rel: 'Enlaza los chips de RAM con el controlador de memoria del procesador.'
                     },
                     {
                         name: 'Buses y Puertos de Datos',
-                        meaning: 'Líneas conductoras y conectores (USB, HDMI, SATA) que transfieren datos y corriente',
-                        clasif: 'Canales de Comunicación',
+                        meaning: 'Líneas conductoras y conectores (USB, HDMI, SATA) que transfieren datos y corriente.',
                         func: 'Transportan bits de información y sincronización entre los diferentes chips.',
                         rel: 'Conectan los periféricos del exterior con los chips internos de la placa base.'
                     }
@@ -680,126 +800,93 @@ const mapData = {
             },
             {
                 id: 'perifericos',
-                title: '5. Periféricos (Entrada y Salida)',
-                desc: 'Dispositivos externos que permiten al usuario interactuar y operar con el equipo',
+                title: '5. Periféricos',
                 relation: 'interactúa con el usuario →',
                 color: '#ec4899',
-                subbranches: [
+                nodes: [
                     {
-                        title: 'Entrada (Hacia la PC)',
-                        color: '#ec4899',
-                        nodes: [
-                            {
-                                name: 'Teclado y Mouse',
-                                meaning: 'Periféricos señaladores y de mecanografía para dar órdenes y escribir texto',
-                                clasif: 'Periférico de Entrada',
-                                func: 'Permiten ingresar comandos, atajos, texto libre y mover el cursor en pantalla.',
-                                rel: 'Envían pulsos digitales a través del puerto USB hacia el Sistema Operativo.'
-                            },
-                            {
-                                name: 'Micrófono y Cámara Web',
-                                meaning: 'Sensores de audio y video que capturan sonido e imágenes del entorno real',
-                                clasif: 'Periférico de Entrada',
-                                func: 'Capturan voz en vivo y secuencias visuales para videollamadas o grabación.',
-                                rel: 'Digitalizan las ondas y entregan el flujo a las aplicaciones a través del SO.'
-                            },
-                            {
-                                name: 'Escáner Óptico',
-                                meaning: 'Dispositivo fotosensible que digitaliza fotos o documentos físicos en papel',
-                                clasif: 'Periférico de Entrada',
-                                func: 'Transforma una hoja física en una imagen digital o PDF almacenable.',
-                                rel: 'Transfiere el archivo escaneado hacia el almacenamiento del equipo.'
-                            }
-                        ]
+                        name: 'Teclado y Mouse',
+                        meaning: 'Dispositivos de entrada para escribir texto, emitir comandos y mover el puntero.',
+                        func: 'Permiten ingresar texto libre, atajos y apuntar en pantalla.',
+                        rel: 'Envían pulsos digitales a través del puerto USB hacia el Sistema Operativo.'
                     },
                     {
-                        title: 'Salida (Hacia el Usuario)',
-                        color: '#ec4899',
-                        nodes: [
-                            {
-                                name: 'Monitor / Pantalla',
-                                meaning: 'Panel visual que proyecta la interfaz gráfica de usuario en tiempo real',
-                                clasif: 'Periférico de Salida',
-                                func: 'Muestra ventanas, texto, videos y el entorno visual con el que se trabaja.',
-                                rel: 'Recibe la señal de video generada por la GPU a través de cables HDMI o DisplayPort.'
-                            },
-                            {
-                                name: 'Altavoces / Parlantes',
-                                meaning: 'Transductores acústicos que convierten señales eléctricas en sonido audible',
-                                clasif: 'Periférico de Salida',
-                                func: 'Reproducen música, efectos sonoros, voces y alertas del sistema operativo.',
-                                rel: 'Reciben la señal de audio de la tarjeta de sonido del computador.'
-                            },
-                            {
-                                name: 'Impresora',
-                                meaning: 'Dispositivo que plasma información digital sobre hojas físicas de papel',
-                                clasif: 'Periférico de Salida',
-                                func: 'Imprime documentos, informes, tareas y gráficos sobre soporte de papel.',
-                                rel: 'Recibe los trabajos de impresión a través del driver del Sistema Operativo.'
-                            }
-                        ]
+                        name: 'Micrófono y Cámara Web',
+                        meaning: 'Sensores de audio y video que capturan sonido e imágenes del entorno real.',
+                        func: 'Capturan voz en vivo y secuencias visuales para videollamadas o grabación.',
+                        rel: 'Digitalizan las ondas y entregan el flujo a las aplicaciones a través del SO.'
                     },
                     {
-                        title: 'Mixtos (Entrada y Salida)',
-                        color: '#ec4899',
-                        nodes: [
-                            {
-                                name: 'Pantalla Táctil (Touchscreen)',
-                                meaning: 'Muestra la imagen (salida) y registra toques dactilares como clics (entrada)',
-                                clasif: 'Periférico Mixto',
-                                func: 'Permite ver contenido visual y manipularlo directamente con los dedos.',
-                                rel: 'Combina en un solo elemento las funciones de monitor, teclado y mouse.'
-                            },
-                            {
-                                name: 'Impresora Multifuncional',
-                                meaning: 'Aparato todo en uno que integra escáner (entrada) con impresora (salida)',
-                                clasif: 'Periférico Mixto',
-                                func: 'Digitaliza papeles físicos hacia la PC y a la vez imprime archivos al papel.',
-                                rel: 'Se comunica por USB o red Wi-Fi realizando ambas tareas simultáneamente.'
-                            },
-                            {
-                                name: 'Diadema con Micrófono',
-                                meaning: 'Audífonos para oír sonido (salida) con micrófono para hablar (entrada)',
-                                clasif: 'Periférico Mixto',
-                                func: 'Permite escuchar audio y hablar en llamadas en un único dispositivo cómodo.',
-                                rel: 'Se enlaza con los canales de entrada y salida de audio de la computadora.'
-                            }
-                        ]
+                        name: 'Escáner Óptico',
+                        meaning: 'Dispositivo fotosensible que digitaliza fotos o documentos físicos en papel.',
+                        func: 'Transforma una hoja física en una imagen digital o PDF almacenable.',
+                        rel: 'Transfiere el archivo escaneado hacia el almacenamiento del equipo.'
+                    },
+                    {
+                        name: 'Monitor / Pantalla',
+                        meaning: 'Panel visual que proyecta la interfaz gráfica de usuario en tiempo real.',
+                        func: 'Muestra ventanas, texto, videos y el entorno visual con el que se trabaja.',
+                        rel: 'Recibe la señal de video generada por la GPU a través de cables HDMI o DisplayPort.'
+                    },
+                    {
+                        name: 'Altavoces / Parlantes',
+                        meaning: 'Transductores acústicos que convierten señales eléctricas en sonido audible.',
+                        func: 'Reproducen música, efectos sonoros, voces y alertas del sistema operativo.',
+                        rel: 'Reciben la señal de audio de la tarjeta de sonido del computador.'
+                    },
+                    {
+                        name: 'Impresora',
+                        meaning: 'Dispositivo que plasma información digital sobre hojas físicas de papel.',
+                        func: 'Imprime documentos, informes, tareas y gráficos sobre soporte de papel.',
+                        rel: 'Recibe los trabajos de impresión a través del driver del Sistema Operativo.'
+                    },
+                    {
+                        name: 'Pantalla Táctil (Touchscreen)',
+                        meaning: 'Muestra la imagen visual y registra toques con los dedos como órdenes.',
+                        func: 'Permite ver contenido visual y manipularlo directamente con los dedos.',
+                        rel: 'Combina en un solo elemento las funciones de monitor, teclado y mouse.'
+                    },
+                    {
+                        name: 'Impresora Multifuncional',
+                        meaning: 'Aparato todo en uno que integra escáner con impresora física.',
+                        func: 'Digitaliza papeles físicos hacia la PC y a la vez imprime archivos al papel.',
+                        rel: 'Se comunica por USB o red Wi-Fi realizando ambas tareas simultáneamente.'
+                    },
+                    {
+                        name: 'Diadema con Micrófono',
+                        meaning: 'Audífonos para oír sonido con micrófono para hablar en un solo periférico.',
+                        func: 'Permite escuchar audio y hablar en llamadas en un único dispositivo cómodo.',
+                        rel: 'Se enlaza con los canales de entrada y salida de audio de la computadora.'
                     }
                 ]
             },
             {
                 id: 'soporte',
-                title: '6. Soporte, Energía y Red',
-                desc: 'Estructura protectora, suministro eléctrico limpio y conectividad al exterior',
+                title: '6. Soporte y Conectividad',
                 relation: 'sustenta y conecta →',
                 color: '#8b5cf6',
                 nodes: [
                     {
                         name: 'Fuente de Poder (PSU)',
-                        meaning: 'PSU (Power Supply Unit): Transforma la corriente de pared en voltajes limpios (12V, 5V, 3.3V)',
-                        clasif: 'Suministro Eléctrico',
+                        meaning: 'PSU (Power Supply Unit): Transforma la corriente de pared en voltajes limpios y seguros (12V, 5V, 3.3V).',
                         func: 'Entrega energía eléctrica estable a la placa base, procesador, discos y ventiladores.',
                         rel: 'Esencial para energizar todos y cada uno de los componentes físicos del computador.'
                     },
                     {
                         name: 'Sistema de Refrigeración',
-                        meaning: 'Disipadores de calor metálicos, pasta térmica, ventiladores y refrigeración líquida',
-                        clasif: 'Protección Térmica',
+                        meaning: 'Disipadores de calor metálicos, pasta térmica, ventiladores y refrigeración líquida.',
                         func: 'Disipa el calor extremo que producen la CPU y la GPU al trabajar a plena carga.',
                         rel: 'Previene que los circuitos se quemen o reduzcan su velocidad por sobrecalentamiento.'
                     },
                     {
                         name: 'Gabinete / Torre (Chasis)',
-                        meaning: 'Caja metálica que aloja, ordena y aísla mecánicamente todo el ensamble interno',
-                        clasif: 'Estructura Física',
+                        meaning: 'Caja metálica que aloja, ordena y aísla mecánicamente todo el ensamble interno.',
                         func: 'Protege las piezas contra golpes, polvo y asegura el flujo de aire ordenado.',
                         rel: 'Sujeta físicamente la fuente de poder, placa base y discos en su posición exacta.'
                     },
                     {
                         name: 'Adaptador de Red (Wi-Fi / Ethernet)',
-                        meaning: 'Tarjeta de comunicación para conectarse a redes locales cableadas e internet',
-                        clasif: 'Comunicación en Red',
+                        meaning: 'Tarjeta de comunicación para conectarse a redes locales cableadas e internet.',
                         func: 'Envía y recibe paquetes de datos para navegar en internet y compartir recursos.',
                         rel: 'Se comunica con el módem/router y es controlado por el Sistema Operativo.'
                     }
@@ -817,28 +904,24 @@ const mapData = {
             {
                 id: 'sisoperativo',
                 title: '1. Software de Sistema',
-                desc: 'Capa base indispensable: toma el control de la máquina y gestiona el hardware',
                 relation: 'administra directamente el hardware →',
                 color: '#a855f7',
                 nodes: [
                     {
                         name: 'Sistema Operativo (SO)',
-                        meaning: 'SO (Windows, Linux, macOS): El administrador principal de toda la computadora',
-                        clasif: 'Software Troncal',
+                        meaning: 'SO (Windows, Linux, macOS): El administrador principal de toda la computadora.',
                         func: 'Administra la memoria, coordina los procesos de la CPU y provee la interfaz gráfica.',
                         rel: 'Actúa de intermediario indispensable entre el hardware físico y las aplicaciones.'
                     },
                     {
                         name: 'Controladores (Drivers)',
-                        meaning: 'Programas traductores que enseñan al SO a dialogar con cada pieza física específica',
-                        clasif: 'Software Controlador',
+                        meaning: 'Programas traductores que enseñan al SO a dialogar con cada pieza física específica.',
                         func: 'Traducen las órdenes generales del SO a las señales exactas que entiende el componente.',
                         rel: 'Permiten que el SO reconozca la tarjeta gráfica, la impresora o el teclado.'
                     },
                     {
                         name: 'Firmware (BIOS / UEFI)',
-                        meaning: 'UEFI / BIOS: Código grabado en la placa base que despierta y prueba el hardware al encender',
-                        clasif: 'Firmware de Inicio',
+                        meaning: 'UEFI / BIOS: Código grabado en la placa base que despierta y prueba el hardware al encender.',
                         func: 'Ejecuta el chequeo inicial de componentes (POST) y arranca el Sistema Operativo.',
                         rel: 'Es el primer programa que corre en la máquina; entrega el mando al Sistema Operativo.'
                     }
@@ -847,28 +930,24 @@ const mapData = {
             {
                 id: 'utilitarios',
                 title: '2. Software Utilitario',
-                desc: 'Herramientas de servicio técnico para proteger, limpiar y optimizar el sistema',
                 relation: 'mantiene y protege →',
                 color: '#06b6d4',
                 nodes: [
                     {
                         name: 'Antivirus y Seguridad',
-                        meaning: 'Software especializado en prevenir, detectar y neutralizar programas maliciosos (malware)',
-                        clasif: 'Seguridad Digital',
+                        meaning: 'Software especializado en prevenir, detectar y neutralizar programas maliciosos (malware).',
                         func: 'Monitorea archivos, descargas y navegación web para evitar infecciones y robo de datos.',
                         rel: 'Opera en segundo plano vigilando las operaciones del Sistema Operativo.'
                     },
                     {
                         name: 'Optimizadores del Sistema',
-                        meaning: 'Herramientas que borran archivos temporales basura y organizan los datos del disco',
-                        clasif: 'Mantenimiento Preventivo',
+                        meaning: 'Herramientas que borran archivos temporales basura y organizan los datos del disco.',
                         func: 'Liberan espacio en disco y corrigen fallos menores para agilizar el rendimiento.',
                         rel: 'Mejoran la velocidad de acceso hacia el disco y conservan memoria RAM libre.'
                     },
                     {
                         name: 'Compresores de Archivos',
-                        meaning: 'Programas como ZIP o RAR que reducen el tamaño de archivos pesados',
-                        clasif: 'Gestión de Archivos',
+                        meaning: 'Programas como ZIP o RAR que reducen el tamaño de archivos pesados.',
                         func: 'Comprimen carpetas completas en un solo archivo liviano para enviar por correo.',
                         rel: 'Interactúan con el sistema de archivos del Sistema Operativo para empaquetar datos.'
                     }
@@ -877,28 +956,24 @@ const mapData = {
             {
                 id: 'desarrollo',
                 title: '3. Herramientas de Desarrollo',
-                desc: 'Instrumentos profesionales que los programadores usan para crear nuevo software',
                 relation: 'construye nuevos programas →',
                 color: '#f59e0b',
                 nodes: [
                     {
                         name: 'Compiladores e Intérpretes',
-                        meaning: 'Traductores de lenguaje humano (Python, C++, Java) a código binario de máquina (0s y 1s)',
-                        clasif: 'Traductor de Código',
+                        meaning: 'Traductores de lenguaje humano (Python, C++, Java) a código binario de máquina (0s y 1s).',
                         func: 'Traducen el texto de programación a instrucciones ejecutables que la CPU comprende.',
                         rel: 'Generan el archivo ejecutable final que el Sistema Operativo podrá correr.'
                     },
                     {
                         name: 'Entorno de Desarrollo (IDE)',
-                        meaning: 'IDE (Integrated Development Environment): Suite completa para programar (ej. VS Code)',
-                        clasif: 'Entorno de Programación',
+                        meaning: 'IDE (Integrated Development Environment): Suite completa para programar (ej. VS Code).',
                         func: 'Provee editor con colores de sintaxis, depurador de errores y terminal en una sola ventana.',
                         rel: 'Coordina compiladores, librerías del sistema y herramientas de depuración.'
                     },
                     {
                         name: 'Control de Versiones (Git)',
-                        meaning: 'Herramientas como Git que guardan el historial completo de cambios en el código fuente',
-                        clasif: 'Gestión de Versiones',
+                        meaning: 'Herramientas como Git que guardan el historial completo de cambios en el código fuente.',
                         func: 'Permite volver atrás en el tiempo si ocurre un error y trabajar en equipo sin sobreescribir.',
                         rel: 'Se apoya en repositorios locales y en la nube (como GitHub) para respaldar el código.'
                     }
@@ -907,35 +982,30 @@ const mapData = {
             {
                 id: 'aplicaciones',
                 title: '4. Software de Aplicación',
-                desc: 'Programas de uso diario orientados a las tareas directas y necesidades del usuario',
                 relation: 'satisface necesidades del usuario →',
                 color: '#ec4899',
                 nodes: [
                     {
                         name: 'Aplicaciones Ofimáticas',
-                        meaning: 'Programas para redactar cartas, hacer cálculos matemáticos y crear presentaciones',
-                        clasif: 'Productividad',
+                        meaning: 'Programas para redactar cartas, hacer cálculos matemáticos y crear presentaciones.',
                         func: 'Permite crear documentos de texto, hojas de cálculo contables y diapositivas visuales.',
                         rel: 'Se ejecutan sobre el Sistema Operativo aprovechando la CPU, RAM y pantalla.'
                     },
                     {
                         name: 'Navegadores de Internet',
-                        meaning: 'Programas (Chrome, Firefox, Edge) que interpretan páginas y servicios web',
-                        clasif: 'Acceso a Internet',
+                        meaning: 'Programas (Chrome, Firefox, Edge) que interpretan páginas y servicios web.',
                         func: 'Permite consultar información, reproducir videos en línea y usar aplicaciones web.',
                         rel: 'Utilizan el adaptador de red para descargar datos y la memoria RAM para mostrarlos.'
                     },
                     {
                         name: 'Software de Diseño y Multimedia',
-                        meaning: 'Programas de edición de audio, video, fotografías y diseño gráfico profesional',
-                        clasif: 'Creación Multimedia',
+                        meaning: 'Programas de edición de audio, video, fotografías y diseño gráfico profesional.',
                         func: 'Procesan imágenes, renderizan efectos visuales y editan pistas de sonido complejas.',
                         rel: 'Hacen un uso intensivo de la memoria RAM y de la aceleración de la tarjeta gráfica.'
                     },
                     {
                         name: 'Software Educativo y Simuladores',
-                        meaning: 'Programas interactivos de aprendizaje, academias virtuales y laboratorios simulados',
-                        clasif: 'Educación y Aprendizaje',
+                        meaning: 'Programas interactivos de aprendizaje, academias virtuales y laboratorios simulados.',
                         func: 'Facilitan el estudio interactivo mediante ejercicios prácticos y simulaciones visuales.',
                         rel: 'Interactúan con el estudiante a través de la pantalla y el sonido del computador.'
                     }
@@ -946,30 +1016,31 @@ const mapData = {
 };
 
 /* ═══════════════════════════════════════════════════
-   CONSTRUCCIÓN VISUAL DEL MAPA
+   REGISTRO GLOBAL DE NODOS PARA EL MODAL
 ═══════════════════════════════════════════════════ */
-function buildComponentCard(node, color, isSoftware) {
-    const meaningClass = isSoftware ? 'card-meaning card-meaning-sw' : 'card-meaning';
+const nodeRegistry = {};
+
+/* ═══════════════════════════════════════════════════
+   CONSTRUCCIÓN VISUAL DEL MAPA LIMPIO
+═══════════════════════════════════════════════════ */
+function buildComponentCard(node, color, branchName, categoryTitle) {
+    const nodeId = 'node_' + Math.random().toString(36).substr(2, 9);
+    nodeRegistry[nodeId] = {
+        ...node,
+        color: color,
+        branch: branchName,
+        category: categoryTitle
+    };
+
     return `
-        <div class="component-card" style="border-left-color: ${color};">
-            <div class="card-header-line">
-                <div class="card-title">${node.name}</div>
-                <span class="card-tag" style="background:${color}18; color:${color}; border: 1px solid ${color}40;">
-                    ${node.clasif}
-                </span>
-            </div>
-            ${node.meaning ? `
-                <div class="${meaningClass}">
-                    <i class="fas fa-lightbulb mr-1 opacity-80"></i>${node.meaning}
-                </div>` : ''
-            }
-            <div class="card-f">
-                <span class="badge-f">F</span>
-                <span>${node.func}</span>
-            </div>
-            <div class="card-r">
-                <span class="badge-r">R</span>
-                <span>${node.rel}</span>
+        <div class="node-card" 
+             style="--card-color: ${color}; --card-color-alpha: ${color}35;" 
+             onclick="openDetailModal('${nodeId}')"
+             title="Clic para ver detalles de ${node.name}">
+            <div class="node-card-name">${node.name}</div>
+            <div class="node-card-btn-hint">
+                <i class="fas fa-info-circle text-xs"></i>
+                <span>ver</span>
             </div>
         </div>`;
 }
@@ -982,10 +1053,10 @@ function buildCardConnector(color) {
         </div>`;
 }
 
-function buildCardsStack(nodes, color, isSoftware) {
+function buildCardsStack(nodes, color, branchName, categoryTitle) {
     let html = '<div class="card-stack">';
     nodes.forEach((n, idx) => {
-        html += buildComponentCard(n, color, isSoftware);
+        html += buildComponentCard(n, color, branchName, categoryTitle);
         if (idx < nodes.length - 1) {
             html += buildCardConnector(color);
         }
@@ -994,31 +1065,7 @@ function buildCardsStack(nodes, color, isSoftware) {
     return html;
 }
 
-function buildCategoryColumn(cat, isSoftware) {
-    let bodyHTML = '';
-
-    if (cat.subbranches) {
-        // Para periféricos con 3 sub-ramas simétricas (Entrada, Salida, Mixtos)
-        const subColsHTML = cat.subbranches.map(sb => {
-            return `
-                <div class="tree-branch-item" style="padding-top: 24px; padding-left: 8px; padding-right: 8px;">
-                    <div class="subgroup-pill" style="margin-bottom: 12px;">${sb.title}</div>
-                    ${buildCardsStack(sb.nodes, sb.color, isSoftware)}
-                </div>`;
-        }).join('');
-
-        bodyHTML = `
-            <div class="tree-line-v" style="height: 16px; background:${cat.color};"></div>
-            <div class="tree-row">
-                ${subColsHTML}
-            </div>`;
-    } else {
-        // Para categorías con lista directa de tarjetas
-        bodyHTML = `
-            <div class="tree-line-v" style="height: 16px; background:${cat.color};"></div>
-            ${buildCardsStack(cat.nodes, cat.color, isSoftware)}`;
-    }
-
+function buildCategoryColumn(cat, branchName) {
     return `
         <div class="tree-branch-item">
             <!-- Indicador de relación hacia la categoría -->
@@ -1029,16 +1076,19 @@ function buildCategoryColumn(cat, isSoftware) {
             <!-- Cabecera de la Categoría -->
             <div class="category-card-header" style="border-color:${cat.color};">
                 <div class="category-card-title" style="color:${cat.color};">${cat.title}</div>
-                <div class="category-card-desc">${cat.desc}</div>
             </div>
 
-            <!-- Contenido conectado -->
-            ${bodyHTML}
+            <!-- Conector hacia las tarjetas -->
+            <div class="tree-line-v" style="height: 16px; background:${cat.color}; opacity:0.6;"></div>
+
+            <!-- Pila de tarjetas limpias -->
+            ${buildCardsStack(cat.nodes, cat.color, branchName, cat.title)}
         </div>`;
 }
 
-function buildMainBranch(branch, isSoftware) {
-    const categoriesHTML = branch.categories.map(c => buildCategoryColumn(c, isSoftware)).join('');
+function buildMainBranch(branch) {
+    const categoriesHTML = branch.categories.map(c => buildCategoryColumn(c, branch.title)).join('');
+    const isSoftware = branch.title === 'SOFTWARE';
 
     return `
         <div class="tree-col">
@@ -1055,7 +1105,7 @@ function buildMainBranch(branch, isSoftware) {
             </div>
             <div class="tree-line-v" style="height: 16px;"></div>
 
-            <!-- Fila horizontal que ramifica a las categorías -->
+            <!-- Fila horizontal continua que ramifica a las categorías -->
             <div class="tree-row">
                 ${categoriesHTML}
             </div>
@@ -1073,19 +1123,19 @@ function renderConceptMap() {
             </div>
 
             <!-- Conector hacia la relación inicial -->
-            <div class="tree-line-v" style="height: 24px;"></div>
+            <div class="tree-line-v" style="height: 22px;"></div>
             <div class="relation-chip">
                 <i class="fas fa-project-diagram text-xs text-cyan-400"></i> se compone fundamentalmente de
             </div>
-            <div class="tree-line-v" style="height: 24px;"></div>
+            <div class="tree-line-v" style="height: 22px;"></div>
 
             <!-- Ramificación horizontal continua hacia Hardware y Software -->
             <div class="tree-row">
-                <div class="tree-branch-item" style="padding-top: 26px; padding-left: 24px; padding-right: 24px;">
-                    ${buildMainBranch(mapData.hardware, false)}
+                <div class="tree-branch-item" style="padding-top: 24px; padding-left: 20px; padding-right: 20px;">
+                    ${buildMainBranch(mapData.hardware)}
                 </div>
-                <div class="tree-branch-item" style="padding-top: 26px; padding-left: 24px; padding-right: 24px;">
-                    ${buildMainBranch(mapData.software, true)}
+                <div class="tree-branch-item" style="padding-top: 24px; padding-left: 20px; padding-right: 20px;">
+                    ${buildMainBranch(mapData.software)}
                 </div>
             </div>
         </div>`;
@@ -1094,12 +1144,58 @@ function renderConceptMap() {
 }
 
 /* ═══════════════════════════════════════════════════
+   CONTROL DEL MODAL DE DETALLES
+═══════════════════════════════════════════════════ */
+const modalOverlay     = document.getElementById('detail-modal');
+const modalTitle       = document.getElementById('modal-title');
+const modalCatBadge    = document.getElementById('modal-cat-badge');
+const modalMeaningBox  = document.getElementById('modal-meaning-box');
+const modalMeaningText = document.getElementById('modal-meaning-text');
+const modalFuncText    = document.getElementById('modal-func-text');
+const modalRelText     = document.getElementById('modal-rel-text');
+
+function openDetailModal(nodeId) {
+    const data = nodeRegistry[nodeId];
+    if (!data) return;
+
+    modalTitle.textContent = data.name;
+    modalCatBadge.textContent = `${data.branch} • ${data.category}`;
+    modalCatBadge.style.backgroundColor = `${data.color}20`;
+    modalCatBadge.style.color = data.color;
+    modalCatBadge.style.border = `1px solid ${data.color}50`;
+
+    if (data.meaning) {
+        modalMeaningBox.style.display = 'block';
+        modalMeaningText.textContent = data.meaning;
+    } else {
+        modalMeaningBox.style.display = 'none';
+    }
+
+    modalFuncText.textContent = data.func;
+    modalRelText.textContent = data.rel;
+
+    modalOverlay.classList.add('active');
+}
+
+function closeDetailModal() {
+    modalOverlay.classList.remove('active');
+}
+
+function handleBackdropClick(e) {
+    if (e.target === modalOverlay) {
+        closeDetailModal();
+    }
+}
+
+// Cerrar con la tecla Escape
+window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        closeDetailModal();
+    }
+});
+
+/* ═══════════════════════════════════════════════════
    MOTOR DE NAVEGACIÓN (PAN Y ZOOM SIN CONFLICTO)
-   - 2 dedos en trackpad → Mueve el mapa (PAN)
-   - Pellizco (pinch) en trackpad → Zoom in / out
-   - Clic izquierdo + arrastrar → Mueve el mapa
-   - Ctrl + rueda de ratón → Zoom in / out
-   - Rueda de ratón sola → Mueve el mapa verticalmente
 ═══════════════════════════════════════════════════ */
 const container = document.getElementById('canvas-container');
 const wrapper   = document.getElementById('map-wrapper');
@@ -1127,7 +1223,7 @@ function zoomAt(delta, focalX, focalY) {
 }
 
 function resetView() {
-    scale = 0.58;
+    scale = 0.62;
     const cw = container.clientWidth;
     const ch = container.clientHeight;
     const ww = wrapper.scrollWidth  * scale;
@@ -1139,6 +1235,8 @@ function resetView() {
 
 /* ── Arrastre con ratón ─────────────────── */
 container.addEventListener('mousedown', e => {
+    // Si se hace clic dentro del modal, no arrastrar
+    if (e.target.closest('#detail-modal')) return;
     if (e.button !== 0) return;
     isDragging = true;
     startX = e.clientX - tx;
@@ -1186,6 +1284,7 @@ function calcPinchDist(t) {
 }
 
 container.addEventListener('touchstart', e => {
+    if (e.target.closest('#detail-modal')) return;
     const touches = getTouches(e);
     if (touches.length === 1) {
         isDragging = true;
