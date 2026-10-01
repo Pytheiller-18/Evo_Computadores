@@ -44,6 +44,7 @@
             <div class="mt-8 flex justify-center gap-4 text-sm font-semibold text-slate-300">
                 <span class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700 shadow-sm"><i class="fas fa-clock text-cyan-400 mr-2"></i>+4000 Años de Historia</span>
                 <span class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700 shadow-sm"><i class="fas fa-microchip text-purple-400 mr-2"></i>17 Hitos Clave</span>
+                <span class="bg-slate-800 px-4 py-2 rounded-full border border-slate-700 shadow-sm text-cyan-300"><i class="fas fa-expand-alt mr-2"></i>Visor Interactivo HD</span>
             </div>
         </div>
     </header>
@@ -55,28 +56,34 @@
             <h2 class="text-3xl font-bold text-center mb-16 text-white"><span class="border-b-4 border-cyan-500 pb-2">Línea de Tiempo Tecnológica</span></h2>
             
             <div class="relative timeline-container py-10">
-                
+
                 <!-- EVENTO 1 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(0)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/01_abaco.png" alt="El Ábaco" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(0)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/01_abaco.png" alt="El Ábaco" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 1 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 1 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">2700 - 2300 a.C.</span>
-                                <i class="fas fa-calculator text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(0)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">El Ábaco</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -94,23 +101,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(1)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/02_pascalina.jpg" alt="La Pascalina" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(1)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/02_pascalina.jpg" alt="La Pascalina" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 2 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 2 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">1642</span>
-                                <i class="fas fa-cogs text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(1)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">La Pascalina</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -128,23 +141,29 @@
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(2)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/03_maquina_analitica.jpg" alt="Máquina Analítica (Babbage)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(2)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/03_maquina_analitica.jpg" alt="Máquina Analítica (Babbage)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 3 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 3 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">1837</span>
-                                <i class="fas fa-drafting-compass text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(2)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Máquina Analítica (Babbage)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -162,23 +181,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-cyan-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(3)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/04_tabuladora_hollerith.jpg" alt="Máquina Tabuladora" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(3)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/04_tabuladora_hollerith.jpg" alt="Máquina Tabuladora" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 4 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 4 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-cyan-900/50 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-800">1890</span>
-                                <i class="fas fa-server text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(3)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Máquina Tabuladora</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -194,25 +219,31 @@
 
                 <!-- EVENTO 5 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-blue-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(96,165,250,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(4)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/05_z3_zuse.jpg" alt="Computadora Z3 (Konrad Zuse)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(4)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/05_z3_zuse.jpg" alt="Computadora Z3 (Konrad Zuse)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 5 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 5 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-blue-900/50 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-800">1941</span>
-                                <i class="fas fa-toggle-on text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(4)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Computadora Z3 (Konrad Zuse)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -230,23 +261,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-blue-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(5)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/06_colossus.jpg" alt="Colossus (Criptografía)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(5)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/06_colossus.jpg" alt="Colossus (Criptografía)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 6 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 6 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-blue-900/50 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-800">1943 - 1944</span>
-                                <i class="fas fa-lock-open text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(5)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Colossus (Criptografía)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -262,25 +299,31 @@
 
                 <!-- EVENTO 7 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-indigo-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(129,140,248,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-indigo-400 shadow-[0_0_15px_rgba(129,140,248,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(6)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/07_von_neumann.png" alt="Arquitectura Von Neumann" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(6)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/07_von_neumann.png" alt="Arquitectura Von Neumann" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 7 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 7 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-indigo-900/50 text-indigo-400 text-xs font-bold px-3 py-1 rounded-full border border-indigo-800">1945</span>
-                                <i class="fas fa-project-diagram text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(6)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Arquitectura Von Neumann</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -298,23 +341,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-indigo-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(7)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/08_eniac.jpg" alt="ENIAC (1ra Generación)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(7)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/08_eniac.jpg" alt="ENIAC (1ra Generación)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 8 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 8 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-indigo-900/50 text-indigo-400 text-xs font-bold px-3 py-1 rounded-full border border-indigo-800">1946</span>
-                                <i class="fas fa-bolt text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(7)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">ENIAC (1ra Generación)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -330,25 +379,31 @@
 
                 <!-- EVENTO 9 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-violet-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(167,139,250,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-violet-400 shadow-[0_0_15px_rgba(167,139,250,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(8)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/09_transistor.jpg" alt="El Transistor (2da Generación)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(8)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/09_transistor.jpg" alt="El Transistor (2da Generación)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 9 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 9 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-violet-900/50 text-violet-400 text-xs font-bold px-3 py-1 rounded-full border border-violet-800">1947</span>
-                                <i class="fas fa-microchip text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(8)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">El Transistor (2da Generación)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -366,23 +421,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-violet-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(9)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/10_circuito_integrado.png" alt="El Circuito Integrado (3ra Gen)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(9)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/10_circuito_integrado.png" alt="El Circuito Integrado (3ra Gen)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 10 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 10 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-violet-900/50 text-violet-400 text-xs font-bold px-3 py-1 rounded-full border border-violet-800">1958 - 1959</span>
-                                <i class="fas fa-border-all text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(9)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">El Circuito Integrado (3ra Gen)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -398,25 +459,31 @@
 
                 <!-- EVENTO 11 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(232,121,249,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-400 shadow-[0_0_15px_rgba(232,121,249,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(10)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/11_ibm_system360.jpg" alt="IBM System/360" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(10)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/11_ibm_system360.jpg" alt="IBM System/360" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 11 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 11 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-fuchsia-900/50 text-fuchsia-400 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-800">1964</span>
-                                <i class="fas fa-building text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(10)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">IBM System/360</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -434,23 +501,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(11)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/12_intel_4004.jpg" alt="Intel 4004 (4ta Gen)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(11)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/12_intel_4004.jpg" alt="Intel 4004 (4ta Gen)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 12 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 12 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-fuchsia-900/50 text-fuchsia-400 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-800">1971</span>
-                                <i class="fas fa-microchip text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(11)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Intel 4004 (4ta Gen)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -466,25 +539,31 @@
 
                 <!-- EVENTO 13 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-pink-400 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(244,114,182,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-pink-400 shadow-[0_0_15px_rgba(244,114,182,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(12)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/13_altair_8800.jpg" alt="Altair 8800" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(12)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/13_altair_8800.jpg" alt="Altair 8800" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 13 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 13 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-pink-900/50 text-pink-400 text-xs font-bold px-3 py-1 rounded-full border border-pink-800">1975</span>
-                                <i class="fas fa-laptop-code text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(12)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Altair 8800</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -502,23 +581,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-pink-400 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(13)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/14_ibm_pc_5150.jpg" alt="IBM PC 5150 y &quot;Clones&quot;" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(13)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/14_ibm_pc_5150.jpg" alt="IBM PC 5150 y "Clones"" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 14 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 14 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-pink-900/50 text-pink-400 text-xs font-bold px-3 py-1 rounded-full border border-pink-800">1981</span>
-                                <i class="fas fa-desktop text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(13)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">IBM PC 5150 y "Clones"</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -534,25 +619,31 @@
 
                 <!-- EVENTO 15 -->
                 <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-purple-500 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.5)] z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(14)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/15_multicore.jpg" alt="Procesadores Multi-núcleo" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(14)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/15_multicore.jpg" alt="Procesadores Multi-núcleo" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 15 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 15 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-purple-900/50 text-purple-400 text-xs font-bold px-3 py-1 rounded-full border border-purple-800">2005 - 2006</span>
-                                <i class="fas fa-layer-group text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(14)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">Procesadores Multi-núcleo</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -570,23 +661,29 @@
                 <div class="relative flex justify-end md:justify-end w-full mb-12 timeline-card">
                     <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-purple-500 z-10 timeline-dot flex items-center justify-center"></div>
                     <div class="w-full md:w-[45%] card-content bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-lg relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(15)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/16_soc_apple_silicon.jpg" alt="SoCs Heterogéneos (UMA)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(15)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/16_soc_apple_silicon.jpg" alt="SoCs Heterogéneos (UMA)" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 16 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 16 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-purple-900/50 text-purple-400 text-xs font-bold px-3 py-1 rounded-full border border-purple-800">2020+</span>
-                                <i class="fas fa-brain text-slate-500"></i>
+                                <button type="button" onclick="openLightbox(15)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-2">SoCs Heterogéneos (UMA)</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -601,26 +698,32 @@
                 </div>
 
                 <!-- EVENTO 17 -->
-                <div class="relative flex justify-end md:justify-start w-full timeline-card">
-                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-500 z-10 timeline-dot flex items-center justify-center shadow-[0_0_15px_rgba(217,70,239,0.8)]"></div>
-                    <div class="w-full md:w-[45%] card-content bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-fuchsia-500/50 overflow-hidden shadow-lg shadow-fuchsia-500/20 relative z-10">
-                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/70 border-b border-slate-700/60 transition-colors" onclick="openLightbox(16)" title="Clic para ampliar imagen y ver detalles hist&oacute;ricos">
-                        <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
-                            <img src="images/17_computacion_cuantica.jpg" alt="Supremacía Cuántica" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108" loading="lazy">
+                <div class="relative flex justify-end md:justify-start w-full mb-12 timeline-card">
+                    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-900 border-4 border-fuchsia-500 shadow-[0_0_15px_rgba(217,70,239,0.8)] z-10 timeline-dot flex items-center justify-center"></div>
+                    <div class="w-full md:w-[45%] bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-fuchsia-500/50 overflow-hidden shadow-lg shadow-fuchsia-500/20 relative z-10">
+                        
+                        <!-- CONTENEDOR DE IMAGEN INTERACTIVA -->
+                        <div class="relative overflow-hidden group cursor-pointer bg-slate-950/80 border-b border-slate-700/60" onclick="openLightbox(16)" title="Clic para ampliar y ver investigación en detalle">
+                            <div class="overflow-hidden aspect-video md:h-52 w-full flex items-center justify-center bg-slate-900">
+                                <img src="images/17_computacion_cuantica.jpg" alt="Supremacía Cuántica" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
+                                </span>
+                                <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
+                                    Hito 17 / 17
+                                </span>
+                            </div>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-between p-4 pointer-events-none">
-                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 bg-slate-900/90 px-3 py-1.5 rounded-full border border-cyan-500/40 shadow-lg backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <i class="fas fa-search-plus text-cyan-400"></i> Clic para ampliar
-                            </span>
-                            <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded border border-slate-700 shadow backdrop-blur-sm">
-                                Hito 17 / 17
-                            </span>
-                        </div>
-                    </div>
+
+                        <!-- CONTENIDO DE LA TARJETA -->
                         <div class="p-6">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="bg-fuchsia-900/50 text-fuchsia-300 text-xs font-bold px-3 py-1 rounded-full border border-fuchsia-700 shadow-inner">Actualidad / Futuro</span>
-                                <i class="fas fa-atom text-fuchsia-400 animate-pulse"></i>
+                                <button type="button" onclick="openLightbox(16)" class="text-xs text-slate-400 hover:text-cyan-300 transition flex items-center gap-1.5 px-2.5 py-1 rounded-md hover:bg-slate-700/60 border border-transparent hover:border-slate-600" title="Ver imagen ampliada e investigación">
+                                    <i class="fas fa-expand-alt text-cyan-400"></i> <span class="hidden sm:inline">Ampliar</span>
+                                </button>
                             </div>
                             <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400 mb-2">Supremacía Cuántica</h3>
                             <ul class="space-y-3 text-sm text-slate-300">
@@ -694,14 +797,13 @@
 
     </main>
 
-
     <!-- ========================================== -->
     <!-- MODAL / LIGHTBOX INTERACTIVO DE IMÁGENES -->
     <!-- ========================================== -->
-    <div id="imageLightbox" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-3 sm:p-6 bg-slate-950/90 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" onclick="handleBackdropClick(event)">
+    <div id="imageLightbox" style="display: none;" class="fixed inset-0 z-50 items-center justify-center p-3 sm:p-6 bg-slate-950/95 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" onclick="handleBackdropClick(event)">
         
         <!-- Contenedor Principal del Modal -->
-        <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] transform scale-95 transition-transform duration-300" id="lightboxCard">
+        <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] transform scale-95 transition-transform duration-300 pointer-events-auto" id="lightboxCard">
             
             <!-- Header del Modal -->
             <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/95 sticky top-0 z-10">
@@ -712,7 +814,7 @@
                 
                 <div class="flex items-center gap-3">
                     <span id="lightboxCounter" class="text-xs text-slate-400 font-mono hidden sm:inline-block bg-slate-800/80 px-2.5 py-1 rounded border border-slate-700">-- / 17</span>
-                    <button type="button" onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center transition border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-400" title="Cerrar (Esc)">
+                    <button type="button" onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center transition border border-slate-700 hover:border-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-400" title="Cerrar visor (Esc)">
                         <i class="fas fa-times text-base"></i>
                     </button>
                 </div>
@@ -720,15 +822,15 @@
 
             <!-- Área de Imagen Central con Controles de Navegación -->
             <div class="relative flex-1 min-h-[260px] max-h-[56vh] bg-slate-950 flex items-center justify-center p-3 sm:p-5 overflow-hidden select-none">
-                <img id="lightboxImg" src="" alt="" class="max-h-[52vh] w-auto max-w-full object-contain rounded-lg shadow-2xl transition-all duration-300">
+                <img id="lightboxImg" src="" alt="" class="max-h-[52vh] w-auto max-w-full object-contain rounded-lg shadow-2xl transition-opacity duration-200">
 
                 <!-- Flecha Anterior -->
-                <button type="button" onclick="prevLightbox(event)" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/85 hover:bg-cyan-600 text-white flex items-center justify-center border border-slate-700/80 hover:border-cyan-400 shadow-xl transition backdrop-blur-sm group focus:outline-none focus:ring-2 focus:ring-cyan-400" title="Anterior (Flecha izquierda)">
+                <button type="button" onclick="prevLightbox(event)" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/85 hover:bg-cyan-600 text-white flex items-center justify-center border border-slate-700/80 hover:border-cyan-400 shadow-xl transition backdrop-blur-sm group focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer" title="Anterior (Flecha izquierda)">
                     <i class="fas fa-chevron-left text-lg group-hover:-translate-x-0.5 transition-transform"></i>
                 </button>
 
                 <!-- Flecha Siguiente -->
-                <button type="button" onclick="nextLightbox(event)" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/85 hover:bg-cyan-600 text-white flex items-center justify-center border border-slate-700/80 hover:border-cyan-400 shadow-xl transition backdrop-blur-sm group focus:outline-none focus:ring-2 focus:ring-cyan-400" title="Siguiente (Flecha derecha)">
+                <button type="button" onclick="nextLightbox(event)" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/85 hover:bg-cyan-600 text-white flex items-center justify-center border border-slate-700/80 hover:border-cyan-400 shadow-xl transition backdrop-blur-sm group focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer" title="Siguiente (Flecha derecha)">
                     <i class="fas fa-chevron-right text-lg group-hover:translate-x-0.5 transition-transform"></i>
                 </button>
             </div>
@@ -757,8 +859,13 @@
                 "title": "El Ábaco",
                 "date": "2700 - 2300 a.C.",
                 "image": "images/01_abaco.png",
-                "caption": "Ábaco tradicional de marco de madera con varillas y cuentas de cálculo.",
-                "detail": "El ábaco representa el primer artefacto físico creado por la humanidad para externalizar operaciones aritméticas. Sus cuentas móviles en varillas divididas por un travesaño permitían sumar, restar y realizar cómputos posicionales avanzados, liberando al cerebro humano de almacenar estados temporales durante cálculos comerciales y astronómicos."
+                "caption": "Ábaco Suanpan tradicional de varillas y cuentas de madera sobre marco pulido.",
+                "desc": "Instrumento manual de cuentas y varillas utilizado para asistir en aritmética.",
+                "tech": "Mecánica manual (madera y piedra).",
+                "aport": "Primer sistema formal de registro y cálculo posicional rudimentario.",
+                "cambio": "Externalizó la carga de la memoria temporal humana, estandarizando el cálculo.",
+                "fuente": "Documento \"Línea de Tiempo Informática\" (Citas 3, 4, 5).",
+                "detail": "El ábaco es el instrumento de cálculo manual más antiguo de la humanidad. Sus cuentas móviles en varillas divididas por un travesaño permitían sumar, restar y realizar cómputos posicionales avanzados, liberando al cerebro humano de almacenar estados temporales durante cálculos comerciales y astronómicos."
         },
         {
                 "id": "02_pascalina",
@@ -766,6 +873,11 @@
                 "date": "1642",
                 "image": "images/02_pascalina.jpg",
                 "caption": "Ejemplar histórico original de la Pascalina en el Musée des Arts et Métiers de París.",
+                "desc": "Calculadora mecánica diseñada por Blaise Pascal.",
+                "tech": "Mecánica de precisión (engranajes, ruedas metálicas y trinquetes).",
+                "aport": "Automatizó las operaciones de suma y resta mediante un mecanismo de acarreo automático.",
+                "cambio": "Transición clave; demostró que el razonamiento lógico paso a paso podía emularse por una máquina sin intervención del juicio humano continuo.",
+                "fuente": "Reportes Técnicos Estudiantiles y \"Línea de Tiempo Informática\".",
                 "detail": "Diseñada y construida por Blaise Pascal a los 19 años para ayudar a su padre recaudador de impuestos. La Pascalina fue la primera calculadora mecánica funcional del mundo. Su mayor aporte fue el 'sautoir' (mecanismo de trinquete de salto), que transfería automáticamente el acarreo decimal entre ruedas dentadas contiguas al llegar al 9, demostrando que el cálculo numérico podía automatizarse mecánicamente."
         },
         {
@@ -774,6 +886,11 @@
                 "date": "1837",
                 "image": "images/03_maquina_analitica.jpg",
                 "caption": "Porción del molino (unidad central de procesamiento) de la Máquina Analítica en el Science Museum de Londres.",
+                "desc": "Diseño teórico de la primera máquina de propósito general.",
+                "tech": "Mecánica a vapor y control por Tarjetas Perforadas (Jacquard).",
+                "aport": "División conceptual de la máquina en \"Molino\" (ALU actual) y \"Almacén\" (Memoria RAM).",
+                "cambio": "Sentó las bases teóricas de la arquitectura de computadores modulares y la programación (software).",
+                "fuente": "\"Línea de Tiempo Informática\" (Citas 1, 3, 4, 6).",
                 "detail": "Concebida por el matemático británico Charles Babbage con algoritmos teóricos pioneros desarrollados por Ada Lovelace (la primera programadora de la historia). Constituye el primer diseño teórico de una computadora Turing-completa de propósito general. Separaba conceptualmente el 'Molino' (ALU o procesador) del 'Almacén' (memoria RAM), gobernada por secuencias de tarjetas perforadas con soporte de bucles y saltos condicionales."
         },
         {
@@ -781,7 +898,12 @@
                 "title": "Máquina Tabuladora",
                 "date": "1890",
                 "image": "images/04_tabuladora_hollerith.jpg",
-                "caption": "Tabuladora eléctrica de Herman Hollerith con diales de conteo y prensa lectora de tarjetas.",
+                "caption": "Tabuladora y clasificadora electromecánica de Herman Hollerith (Museo Scienza Tecnologia Milano).",
+                "desc": "Máquina para contabilizar los datos del censo de EE.UU.",
+                "tech": "Electromecánica, tarjetas perforadas y circuitos cerrados en mercurio.",
+                "aport": "Primer sistema automatizado para el procesamiento masivo de datos comerciales y gubernamentales.",
+                "cambio": "Redujo el procesamiento de años a meses. Fundó la empresa que se convertiría en IBM.",
+                "fuente": "Documento \"Línea de Tiempo Informática\".",
                 "detail": "Desarrollada por el ingeniero Herman Hollerith para procesar el censo de EE.UU. de 1890. Combinaba tarjetas perforadas con una prensa de agujas que cerraban circuitos eléctricos al entrar en contacto con pocillos de mercurio, haciendo avanzar los diales electromecánicos. Redujo el tiempo de procesamiento de 8 años a solo unos meses. Hollerith fundó la Tabulating Machine Company, compañía pilar que posteriormente se transformó en IBM."
         },
         {
@@ -790,6 +912,11 @@
                 "date": "1941",
                 "image": "images/05_z3_zuse.jpg",
                 "caption": "Réplica funcional de la computadora electromecánica Z3 en el Deutsches Museum de Múnich.",
+                "desc": "Primera computadora funcional completamente automática y programable.",
+                "tech": "Electromecánica (2,300 relés telefónicos).",
+                "aport": "Aritmética de punto flotante y uso estricto de Lógica Booleana.",
+                "cambio": "Abandono definitivo del lento y pesado sistema decimal en favor del procesamiento binario puro.",
+                "fuente": "\"Línea de Tiempo Informática\" (Citas 7, 8).",
                 "detail": "Construida por Konrad Zuse en Berlín en 1941, la Z3 fue la primera computadora del mundo completamente funcional, programable y automática. Operaba con 2.300 relés electromecánicos de telefonía y fue pionera en abandonar el sistema decimal para adoptar la lógica binaria booleana estricta (0 y 1) y aritmética de coma flotante de 22 bits, leyendo instrucciones perforadas en película cinematográfica de 35 mm."
         },
         {
@@ -798,6 +925,11 @@
                 "date": "1943 - 1944",
                 "image": "images/06_colossus.jpg",
                 "caption": "Computadora electrónica Colossus en Bletchley Park utilizada para descifrar el código Lorenz.",
+                "desc": "Computadora británica en Bletchley Park para romper códigos de cifrado alemanes.",
+                "tech": "Electrónica pura (1,500 válvulas de vacío) y sensores ópticos (5,000 caracteres/s).",
+                "aport": "Primer procesamiento digital programable a gran escala del mundo.",
+                "cambio": "Demostró que la electrónica sin partes móviles mecánicas multiplicaba la velocidad de cálculo astronómicamente.",
+                "fuente": "Presentación \"Línea del tiempo JMB.pdf\" y documento central.",
                 "detail": "Desarrollada por el ingeniero Tommy Flowers en la estación secreta de Bletchley Park durante la Segunda Guerra Mundial. Empleaba entre 1.500 y 2.400 válvulas de vacío (tubos termoiónicos) y sensores ópticos para leer cintas perforadas a una velocidad de 5.000 caracteres por segundo. Descifraba las comunicaciones ultrasecretas del alto mando alemán (telégrafo Lorenz SZ40/42), demostrando que la electrónica pura era miles de veces más rápida que los relés mecánicos."
         },
         {
@@ -805,7 +937,12 @@
                 "title": "Arquitectura Von Neumann",
                 "date": "1945",
                 "image": "images/07_von_neumann.png",
-                "caption": "Diagrama de bloques de la Arquitectura Von Neumann (CPU, Memoria Principal y Buses de E/S).",
+                "caption": "Diagrama formal de bloques de la Arquitectura Von Neumann (CPU, Memoria Principal y Buses de E/S).",
+                "desc": "Modelo lógico (\"First Draft on EDVAC\") para la estructura de computadores.",
+                "tech": "Arquitectura Teórica Lógica / Diseño de Hardware.",
+                "aport": "El concepto de \"Programa Almacenado\": memoria unificada para datos y código.",
+                "cambio": "Eliminó la necesidad de recablear físicamente la máquina para cada tarea (como pasaba en ENIAC), naciendo el software moderno.",
+                "fuente": "Análisis Técnico - S. Prada / \"Línea de Tiempo Informática\".",
                 "detail": "Formulada en el célebre documento 'First Draft of a Report on the EDVAC' por John von Neumann, John Mauchly y J. Presper Eckert. Introdujo el concepto nuclear de la computación moderna: el 'Programa Almacenado'. Al compartir los datos del usuario y el código de instrucciones el mismo espacio direccionable de memoria, eliminó para siempre la necesidad de recablear físicamente las máquinas para cambiar de tarea."
         },
         {
@@ -814,6 +951,11 @@
                 "date": "1946",
                 "image": "images/08_eniac.jpg",
                 "caption": "Las programadoras pioneras Betty Snyder y Glen Beck operando el ENIAC en la Universidad de Pensilvania.",
+                "desc": "Primera computadora electrónica y digital de propósito general (EE.UU.).",
+                "tech": "Termoiónica: 17,400 tubos de vacío. Consumía 150-200 kW.",
+                "aport": "Poder de cálculo colosal para su época (5,000 sumas por segundo para tablas balísticas).",
+                "cambio": "Inició formalmente la Primera Generación, aunque padecía de problemas térmicos severos por usar vacío.",
+                "fuente": "\"Línea del Tiempo NSA\" y \"Línea de Tiempo Informática\".",
                 "detail": "La Electronic Numerical Integrator and Computer fue la primera computadora digital electrónica de propósito general de EE.UU. Pesaba más de 27 toneladas y contenía 17.468 tubos de vacío, ocupando 167 m² y consumiendo 150 kW. Capaz de realizar 5.000 sumas por segundo para calcular tablas de tiro de artillería, inauguró formalmente la Primera Generación de computadoras, a pesar de sus intensos problemas térmicos de mantenimiento de válvulas."
         },
         {
@@ -822,6 +964,11 @@
                 "date": "1947",
                 "image": "images/09_transistor.jpg",
                 "caption": "Réplica histórica del primer transistor de contacto de punta inventado en los Laboratorios Bell.",
+                "desc": "Dispositivo inventado en Bell Labs que modula corriente eléctrica.",
+                "tech": "Estado sólido (Semiconductores: Germanio/Silicio).",
+                "aport": "Realiza la misma función lógica de un tubo de vacío, pero sin filamentos calientes ni vacíos frágiles.",
+                "cambio": "Incrementó brutalmente la confiabilidad (MTBF) y redujo el tamaño, iniciando la 2da Generación.",
+                "fuente": "Documentos del Taller (\"Análisis Técnico\" / \"Línea de Tiempo Informática\").",
                 "detail": "Creado en diciembre de 1947 por John Bardeen, Walter Brattain y William Shockley en Bell Labs (Premio Nobel de Física 1956). Basado en el contacto de dos láminas de oro sobre un cristal semiconductor de germanio, este diminuto dispositivo cumplía la misma función de conmutación y amplificación que un tubo de vacío, pero sin calentar filamentos, sin fragilidad de cristal y con un consumo de energía casi insignificante, dando inicio a la Segunda Generación."
         },
         {
@@ -830,6 +977,11 @@
                 "date": "1958 - 1959",
                 "image": "images/10_circuito_integrado.png",
                 "caption": "Prototipo original del circuito integrado de germanio construido por Jack Kilby en Texas Instruments.",
+                "desc": "Agrupación de miles de transistores en una placa monolítica.",
+                "tech": "Litografía Planar y Vaporización sobre oblea de Silicio (Noyce/Kilby).",
+                "aport": "Eliminó el cableado manual propenso a fallas (la \"Tiranía de los Números\").",
+                "cambio": "Miniaturización masiva de los circuitos (Microchips) reduciendo los costos dramáticamente.",
+                "fuente": "Documento \"Línea de Tiempo Informática\".",
                 "detail": "Desarrollado independientemente por Jack Kilby (Texas Instruments, 1958) y Robert Noyce (Fairchild Semiconductor, 1959). Logró integrar múltiples transistores, diodos, resistencias y condensadores en una única pastilla o bloque monolítico semiconductor. Este avance resolvió la llamada 'tiranía de los números' (la imposibilidad física de cablear manualmente millones de componentes discretos) y permitió la miniaturización masiva de los microchips de Tercera Generación."
         },
         {
@@ -838,6 +990,11 @@
                 "date": "1964",
                 "image": "images/11_ibm_system360.jpg",
                 "caption": "Mainframe corporativo IBM System/360 Modelo 40 con paneles de puertas abiertas y cableado SLT.",
+                "desc": "Primera familia de ordenadores corporativos compatibles.",
+                "tech": "Tecnología Lógica Sólida (SLT) e integración a gran escala.",
+                "aport": "El software escrito para la máquina más lenta servía sin cambios en la más rápida.",
+                "cambio": "Estandarizó permanentemente el Byte de 8 bits y direccionamiento de 32 bits.",
+                "fuente": "\"Línea de Tiempo.pdf\" y documento central.",
                 "detail": "La mayor apuesta empresarial de IBM liderada por Thomas Watson Jr. y Gene Amdahl. Fue la primera familia de computadores de la historia donde la arquitectura se separó de la implementación de hardware: el software desarrollado para el modelo básico funcionaba idénticamente en las versiones de gran escala. Además, estandarizó en toda la industria informática el byte de 8 bits y palabras de 32 bits que continúan rigiendo en la actualidad."
         },
         {
@@ -846,6 +1003,11 @@
                 "date": "1971",
                 "image": "images/12_intel_4004.jpg",
                 "caption": "Microprocesador monolítico Intel C4004 en encapsulado cerámico blanco de 16 pines con contactos dorados.",
+                "desc": "Primer microprocesador monolítico comercial del mundo.",
+                "tech": "Microchip LSI (2,300 transistores pMOS en 10 micrómetros).",
+                "aport": "Unificó Unidad de Control, ALU y registros lógicos en un único chip de 4 bits.",
+                "cambio": "Inició formalmente la era de los Microcomputadores al condensar el cerebro de la máquina.",
+                "fuente": "Todos los documentos del Taller.",
                 "detail": "Diseñado por Federico Faggin, Ted Hoff y Masatoshi Shima para calculadoras Busicom. Fue el primer microprocesador comercial del mundo en un único chip de silicio. En una pastilla diminuta de apenas 12 mm² alojó 2.300 transistores pMOS en litografía de 10 micrómetros a 740 kHz con un bus de 4 bits, comprimiendo el procesador central entero de una computadora e inaugurando la era de la Cuarta Generación y los microcomputadores."
         },
         {
@@ -854,6 +1016,11 @@
                 "date": "1975",
                 "image": "images/13_altair_8800.jpg",
                 "caption": "Microcomputador personal MITS Altair 8800 con panel frontal de interruptores y diodos LED.",
+                "desc": "Computador personal en kit para aficionados.",
+                "tech": "Procesador Intel 8080 (8-bits) y Bus de Expansión S-100.",
+                "aport": "Arquitectura abierta mediante ranuras que permitió crear hardware de terceros (tarjetas gráficas, etc.).",
+                "cambio": "Generó el ecosistema donde nació Microsoft (Altair BASIC) y validó el software comercial.",
+                "fuente": "\"Línea de Tiempo Informática\".",
                 "detail": "Diseñado por Ed Roberts en MITS con el microprocesador Intel 8080 de 8 bits y arquitectura de bus modular S-100. Portada de la revista Popular Electronics en enero de 1975, se comercializó en kit para armar y detonó la revolución de la informática personal. Inspiró a Bill Gates y Paul Allen a fundar Microsoft para crear el software 'Altair BASIC', demostrando que el software para PCs podía ser un negocio viable e independiente."
         },
         {
@@ -862,7 +1029,12 @@
                 "date": "1981",
                 "image": "images/14_ibm_pc_5150.jpg",
                 "caption": "Computador personal IBM PC 5150 original con monitor fósforo verde IBM 5151, teclado y disqueteras 5.25\".",
-                "detail": "Creado por el equipo de Don Estridge en Boca Ratón (Florida) empleando componentes estándar de terceros: CPU Intel 8088 a 4.77 MHz, sistema operativo MS-DOS de Microsoft y ranuras de expansión ISA. Su arquitectura abierta propició la creación de la BIOS clonada por ingeniería inversa limpia (Compaq), transformando al estándar PC-compatible en la plataforma dominante del mercado informático global."
+                "desc": "Estándar de ordenador personal comercial.",
+                "tech": "Arquitectura abierta x86 (Intel 8088), SO MS-DOS e Ingeniería de Sala Limpia.",
+                "aport": "Democratizó el hardware, empresas como Compaq clonaron legalmente su BIOS.",
+                "cambio": "Dominio de Windows/x86, la guerra de precios global masificó los computadores en cada escritorio.",
+                "fuente": "Presentación visual y \"Línea de Tiempo Informática\".",
+                "detail": "Creado por el equipo de Don Estridge en Boca Ratón empleando componentes estándar de terceros: CPU Intel 8088 a 4.77 MHz, sistema operativo MS-DOS de Microsoft y ranuras de expansión ISA. Su arquitectura abierta propició la creación de la BIOS clonada por ingeniería inversa limpia (Compaq), transformando al estándar PC-compatible en la plataforma dominante del mercado informático global."
         },
         {
                 "id": "15_multicore",
@@ -870,6 +1042,11 @@
                 "date": "2005 - 2006",
                 "image": "images/15_multicore.jpg",
                 "caption": "Procesador multinúcleo Intel Core 2 Duo Wolfdale de arquitectura x86-64 y tecnología de 45 nm.",
+                "desc": "Arquitecturas que albergan varios procesadores independientes en una misma pastilla.",
+                "tech": "Paralelismo a nivel de hilos (TLP) en silicio masivo.",
+                "aport": "Superó el \"Muro Térmico\" del escalado de Dennard al bajar la frecuencia y repartir el trabajo.",
+                "cambio": "Transición forzosa de la industria del software hacia programación concurrente y en hilos.",
+                "fuente": "Documento \"Análisis Técnico\".",
                 "detail": "A mediados de la década del 2000, la industria topó con el 'Muro Térmico' (Power Wall) y el fin del escalado de Dennard: incrementar las frecuencias de reloj (GHz) provocaba un calor y consumo insostenibles. Fabricantes como Intel (Core 2 Duo) y AMD (Athlon 64 X2) optaron por colocar dos o más núcleos independientes de procesamiento en un único chip físico, forzando a los sistemas operativos y software a migrar a modelos concurrentes de multiprocesamiento simétrico."
         },
         {
@@ -878,6 +1055,11 @@
                 "date": "2020+",
                 "image": "images/16_soc_apple_silicon.jpg",
                 "caption": "SoC Apple Silicon M1 con CPU, GPU, Neural Engine y módulos de memoria unificada UMA de alta velocidad.",
+                "desc": "System-on-a-Chip combinando CPU, GPU y aceleradores (NPU) en un solo silicio (Ej. Apple Silicon M).",
+                "tech": "Litografía EUV ultra extrema (3nm) y Arquitectura de Memoria Unificada (UMA).",
+                "aport": "Eliminación de cuellos de botella de transferencia de RAM, logrando eficiencias de ~10W.",
+                "cambio": "Permite procesar enormes Modelos de Lenguaje de IA Generativa de forma local y privada.",
+                "fuente": "\"Línea de Tiempo Informática\".",
                 "detail": "Representa el paradigma del System-on-Chip (SoC) de altísimo rendimiento y bajísimo consumo. Fabricado en litografías ultra-avanzadas (5 nm/3 nm), unifica en un solo silicio núcleos de CPU de alta eficiencia y rendimiento, GPU compartida, aceleradores neuronales (NPU) y Arquitectura de Memoria Unificada (UMA). Todos los subsistemas comparten la misma memoria sin necesidad de transferir datos por buses lentos, acelerando la inferencia de IA local y reduciendo el consumo a solo 10-20W."
         },
         {
@@ -886,6 +1068,11 @@
                 "date": "Actualidad / Futuro",
                 "image": "images/17_computacion_cuantica.jpg",
                 "caption": "Criostato de dilución en candelabro dorado del computador cuántico IBM Quantum System One a 15 milikelvin.",
+                "desc": "Sistemas informáticos post-silicio operados a niveles subatómicos.",
+                "tech": "Cúbits controlados, refrigeración criogénica y Superposición/Entrelazamiento Cuántico.",
+                "aport": "Capacidad masiva para evaluar probabilidades múltiples de manera paralela y no lineal.",
+                "cambio": "Romperá criptografía convencional y resolverá cálculos moleculares exponenciales en minutos.",
+                "fuente": "Documento \"Análisis Técnico\".",
                 "detail": "Representa el salto más allá del paradigma binario de Turing y Von Neumann. Utiliza cúbits basados en circuitos superconductores que aprovechan la superposición cuántica (existiendo en infinitas combinaciones de 0 y 1 simultáneamente) y el entrelazamiento. Para evitar la decoherencia cuántica provocada por el ruido térmico, el procesador se aísla en criostatos a 15 milikelvin (-273,13 °C), diseñados para solucionar cálculos moleculares, criptografía cuántica y optimización matemática inalcanzables para supercomputadores clásicos."
         }
 ];
@@ -900,12 +1087,11 @@
         const captionText = document.getElementById('captionText');
         const lightboxDetail = document.getElementById('lightboxDetail');
 
-        function updateLightboxContent(idx) {
+        function updateLightboxContent(idx, immediate = false) {
             const data = timelineMilestones[idx];
             if (!data) return;
 
-            lightboxImg.style.opacity = '0';
-            setTimeout(() => {
+            const render = () => {
                 lightboxImg.src = data.image;
                 lightboxImg.alt = data.title;
                 lightboxTitle.textContent = data.title;
@@ -914,31 +1100,40 @@
                 captionText.textContent = data.caption;
                 lightboxDetail.textContent = data.detail;
                 lightboxImg.style.opacity = '1';
-            }, 150);
+            };
+
+            if (immediate) {
+                render();
+            } else {
+                lightboxImg.style.opacity = '0';
+                setTimeout(render, 120);
+            }
         }
 
         function openLightbox(index) {
             currentLightboxIndex = index;
-            updateLightboxContent(index);
+            updateLightboxContent(index, true);
 
-            lightbox.classList.remove('hidden');
+            lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
             // Trigger animation
             requestAnimationFrame(() => {
-                lightbox.classList.remove('opacity-0');
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                lightbox.classList.add('pointer-events-auto');
                 lightboxCard.classList.remove('scale-95');
                 lightboxCard.classList.add('scale-100');
             });
         }
 
         function closeLightbox() {
-            lightbox.classList.add('opacity-0');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            lightbox.classList.remove('pointer-events-auto');
             lightboxCard.classList.remove('scale-100');
             lightboxCard.classList.add('scale-95');
             
             setTimeout(() => {
-                lightbox.classList.add('hidden');
+                lightbox.style.display = 'none';
                 document.body.style.overflow = '';
             }, 300);
         }
@@ -946,13 +1141,13 @@
         function prevLightbox(e) {
             if (e) e.stopPropagation();
             currentLightboxIndex = (currentLightboxIndex - 1 + timelineMilestones.length) % timelineMilestones.length;
-            updateLightboxContent(currentLightboxIndex);
+            updateLightboxContent(currentLightboxIndex, false);
         }
 
         function nextLightbox(e) {
             if (e) e.stopPropagation();
             currentLightboxIndex = (currentLightboxIndex + 1) % timelineMilestones.length;
-            updateLightboxContent(currentLightboxIndex);
+            updateLightboxContent(currentLightboxIndex, false);
         }
 
         function handleBackdropClick(e) {
@@ -963,7 +1158,7 @@
 
         // Navegación por teclado
         window.addEventListener('keydown', (e) => {
-            if (lightbox.classList.contains('hidden')) return;
+            if (lightbox.style.display === 'none') return;
 
             if (e.key === 'Escape') {
                 closeLightbox();
