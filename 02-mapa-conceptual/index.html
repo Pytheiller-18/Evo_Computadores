@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Mapa Conceptual del Sistema de Computación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow: hidden; /* Prevent native scroll, use custom canvas pan */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Toolbar styles */
+        .toolbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid #334155;
+            padding: 10px 20px;
+            border-radius: 999px;
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            align-items: center;
+        }
+
+        .btn {
+            background: #1e293b;
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* Canvas / Concept Map Area */
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            cursor: grab;
+            position: relative;
+        }
+        #canvas-container:active {
+            cursor: grabbing;
+        }
+
+        #map-wrapper {
+            position: absolute;
+            transform-origin: 0 0;
+            padding: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: max-content;
+        }
+
+        /* Tree Lines using Pseudo-elements */
+        .tree-level {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            padding-top: 40px;
+            gap: 40px;
+        }
+
+        .tree-level::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 40px;
+            background-color: #475569;
+        }
+
+        .tree-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Horizontal connection lines */
+        .tree-branches {
+            display: flex;
+            position: relative;
+            padding-top: 40px;
+            gap: 30px;
+        }
+
+        .tree-branches::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #475569;
+        }
+
+        .tree-branch {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .tree-branch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background-color: #475569;
+        }
+
+        /* Connector Labels */
+        .connector-label {
+            background: #1e293b;
+            border: 1px dashed #64748b;
+            color: #94a3b8;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        /* Nodes */
+        .node-root {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+            border: 2px solid #bae6fd;
+            text-align: center;
+            z-index: 20;
+            position: relative;
+        }
+
+        .node-main {
+            background: #1e293b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            border: 2px solid;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 20;
+            position: relative;
+        }
+        
+        .border-hw { border-color: #38bdf8; }
+        .border-sw { border-color: #a855f7; }
+
+        .node-category {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #475569;
+            z-index: 20;
+            position: relative;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Grid for component cards */
+        .component-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .component-card {
+            background: #1e293b;
+            border-left: 4px solid;
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            width: 260px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .component-card:hover {
+            transform: translateY(-2px);
+            background: #2dd4bf20;
+        }
+
+        /* Custom Scrollbar for inner texts if needed */
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <a href="../index.html" class="btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+            <i class="fas fa-arrow-left"></i> Menú Principal
+        </a>
+        <a href="../01-linea-de-tiempo/index.html" class="btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; border-color:#818cf8; color:#c084fc;">
+            <i class="fas fa-history"></i> Línea de Tiempo
+        </a>
+        <div class="h-4 w-px bg-slate-600 mx-1 hidden sm:block"></div>
+        <span class="text-sm font-bold text-white tracking-wide mr-2 hidden md:inline">💻 Mapa Conceptual Interactivo</span>
+        <button class="btn" onclick="zoom(0.1)">🔍 Zoom In</button>
+        <button class="btn" onclick="zoom(-0.1)">🔎 Zoom Out</button>
+        <button class="btn" onclick="resetView()">🔄 Centrar Mapa</button>
+        <div class="h-4 w-px bg-slate-600 mx-2 hidden sm:block"></div>
+        <span class="text-xs text-slate-400 hidden lg:inline">Arrastra el fondo para moverte</span>
+    </div>
+
+    <div id="canvas-container">
+        <div id="map-wrapper">
+            <!-- Root -->
+            <div class="node-root">
+                SISTEMA DE COMPUTACIÓN
+            </div>
+
+            <!-- Level 1: HW / SW -->
+            <div class="tree-level" style="gap: 150px;">
+                <div class="connector-label" style="top: 15px;">se compone de</div>
+                
+                <!-- HARDWARE BRANCH -->
+                <div class="tree-group">
+                    <div class="node-main border-hw text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+                        HARDWARE
+                        <div class="text-[10px] text-slate-400 font-normal mt-1">Soporte Físico (Tangible)</div>
+                    </div>
+                    
+                    <div class="tree-branches" style="gap: 20px;">
+                        <div class="connector-label" style="top: 15px; background: #0c4a6e; color: #7dd3fc; border-color: #0284c7;">incluye</div>
+                        
+                        <!-- Cat: Procesamiento -->
+                        <div class="tree-branch">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">procesa →</div>
+                            <div class="node-category border-sky-500 text-sky-300">A. Procesamiento</div>
+                            <div class="component-grid" id="grid-procesamiento"></div>
+                        </div>
+
+                        <!-- Cat: Memoria -->
+                        <div class="tree-branch">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">almacena temp. →</div>
+                            <div class="node-category border-emerald-500 text-emerald-300">B. Memoria</div>
+                            <div class="component-grid" id="grid-memoria"></div>
+                        </div>
+
+                        <!-- Cat: Almacenamiento -->
+                        <div class="tree-branch">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">guarda perm. →</div>
+                            <div class="node-category border-amber-500 text-amber-300">C. Almacenamiento</div>
+                            <div class="component-grid" id="grid-almacenamiento"></div>
+                        </div>
+
+                        <!-- Cat: Placa Base -->
+                        <div class="tree-branch">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">interconecta →</div>
+                            <div class="node-category border-orange-500 text-orange-300">D. Placa Base</div>
+                            <div class="component-grid" id="grid-placabase"></div>
+                        </div>
+
+                        <!-- Cat: Periféricos (Entrada, Salida, Mixtos) Grouped -->
+                        <div class="tree-branch" style="border-left: 1px dashed #334155; padding-left: 15px;">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">interactúa →</div>
+                            <div class="node-category border-pink-500 text-pink-300">E/F/G. Periféricos</div>
+                            
+                            <div class="text-[10px] font-bold text-slate-500 mt-2 mb-1 uppercase">Entrada (recibe)</div>
+                            <div class="component-grid mb-4" id="grid-entrada"></div>
+                            
+                            <div class="text-[10px] font-bold text-slate-500 mb-1 uppercase">Salida (muestra)</div>
+                            <div class="component-grid mb-4" id="grid-salida"></div>
+                            
+                            <div class="text-[10px] font-bold text-slate-500 mb-1 uppercase">E/S Mixtos (ambos)</div>
+                            <div class="component-grid" id="grid-mixtos"></div>
+                        </div>
+
+                        <!-- Cat: Comunicación & Alimentación -->
+                        <div class="tree-branch" style="border-left: 1px dashed #334155; padding-left: 15px;">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">soporta →</div>
+                            <div class="node-category border-indigo-500 text-indigo-300">H/I. Soporte y Red</div>
+                            
+                            <div class="text-[10px] font-bold text-slate-500 mt-2 mb-1 uppercase">Comunicación (envía/recibe)</div>
+                            <div class="component-grid mb-4" id="grid-comunicacion"></div>
+                            
+                            <div class="text-[10px] font-bold text-slate-500 mb-1 uppercase">Alimentación (energiza)</div>
+                            <div class="component-grid" id="grid-alimentacion"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOFTWARE BRANCH -->
+                <div class="tree-group">
+                    <div class="node-main border-sw text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                        SOFTWARE
+                        <div class="text-[10px] text-slate-400 font-normal mt-1">Soporte Lógico (Intangible)</div>
+                    </div>
+
+                    <!-- Connection between HW and SW -->
+                    <div style="position: absolute; left: -105px; top: 25px; width: 100px; height: 2px; background: #64748b; border-top: 2px dashed #94a3b8;">
+                        <div class="connector-label" style="top: -22px; font-size: 9px; background:#0f172a;">requiere y controla</div>
+                    </div>
+                    
+                    <div class="tree-branches" style="gap: 20px;">
+                        <div class="connector-label" style="top: 15px; background: #3b0764; color: #d8b4fe; border-color: #9333ea;">incluye</div>
+                        
+                        <!-- Cat: Software -->
+                        <div class="tree-branch">
+                            <div class="connector-label" style="top: -10px; border:none; background:transparent;">ejecuta →</div>
+                            <div class="node-category border-purple-500 text-purple-300">J. Software</div>
+                            <div class="component-grid" id="grid-software"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data strictly based on the workshop requirements (36 elements, 10 categories)
+        const mapData = {
+            procesamiento: {
+                color: '#0ea5e9',
+                nodes: [
+                    { name: 'CPU / Procesador', func: 'Ejecuta instrucciones y procesa datos.', rel: 'Se apoya en RAM y Placa base.', clasif: 'Hardware - Unidad Central' },
+                    { name: 'Unidad de Control (UC)', func: 'Interpreta instrucciones y dirige flujo.', rel: 'Dirige ALU y registros.', clasif: 'Hardware - Subcomponente CPU' },
+                    { name: 'ALU', func: 'Realiza cálculos y operaciones lógicas.', rel: 'Recibe datos de registros.', clasif: 'Hardware - Subcomponente CPU' },
+                    { name: 'Registros', func: 'Guarda temporalmente operandos.', rel: 'Interactúa con UC y ALU.', clasif: 'Hardware - Memoria CPU' },
+                    { name: 'Memoria Caché', func: 'Retiene datos frecuentes para rapidez.', rel: 'Puente entre CPU y RAM.', clasif: 'Hardware - Nivel intermedio' }
+                ]
+            },
+            memoria: {
+                color: '#10b981',
+                nodes: [
+                    { name: 'Memoria RAM', func: 'Almacena temporalmente programas en uso.', rel: 'Alimenta a la CPU; recibe de HDD/SSD.', clasif: 'Memoria Volátil' },
+                    { name: 'Memoria ROM', func: 'Guarda instrucciones de arranque (BIOS).', rel: 'Se ejecuta antes del Sistema Operativo.', clasif: 'Memoria No Volátil' },
+                    { name: 'Memoria Caché', func: 'Acelera acceso de CPU a datos usados.', rel: 'Intermediario CPU-RAM.', clasif: 'Nivel intermedio' }
+                ]
+            },
+            almacenamiento: {
+                color: '#f59e0b',
+                nodes: [
+                    { name: 'Disco Duro HDD', func: 'Guarda archivos permanentemente.', rel: 'Conecta a placa base, transfiere a RAM.', clasif: 'Almacenamiento Mecánico' },
+                    { name: 'Unidad SSD', func: 'Guarda datos a alta velocidad.', rel: 'Conecta a placa base, sin partes móviles.', clasif: 'Almacenamiento Flash' },
+                    { name: 'Unidades Externas', func: 'Transporta y respalda información.', rel: 'Se comunica por USB con el SO.', clasif: 'Almacenamiento Extraíble' }
+                ]
+            },
+            placabase: {
+                color: '#f97316',
+                nodes: [
+                    { name: 'Motherboard', func: 'Interconecta todos los componentes.', rel: 'Sostiene CPU, RAM, fuente y buses.', clasif: 'Plataforma Principal' },
+                    { name: 'Chipset', func: 'Gestiona tráfico de datos de la placa.', rel: 'Coordina procesador y periféricos.', clasif: 'Circuito de Control' },
+                    { name: 'Ranuras Expansión', func: 'Permiten instalar tarjetas (GPU, Red).', rel: 'Conectan con CPU y chipset.', clasif: 'Interfaz PCIe' },
+                    { name: 'Ranuras Memoria', func: 'Alojan los módulos de RAM.', rel: 'Enlazan RAM con bus del sistema.', clasif: 'Interfaz DIMM' },
+                    { name: 'Conectores', func: 'Unen cables de energía y datos.', rel: 'Enlazan fuente, discos y botones.', clasif: 'Interfaz Física' }
+                ]
+            },
+            entrada: {
+                color: '#ec4899',
+                nodes: [
+                    { name: 'Teclado', func: 'Permite introducir texto y comandos.', rel: 'Envía señales a placa base y SO.', clasif: 'Periférico Entrada' },
+                    { name: 'Mouse', func: 'Señala y desplaza el cursor.', rel: 'Reporta posición al Sistema Operativo.', clasif: 'Periférico Entrada' },
+                    { name: 'Micrófono', func: 'Convierte sonido en señal digital.', rel: 'Entrega audio a tarjeta de sonido/SO.', clasif: 'Periférico Entrada' },
+                    { name: 'Cámara', func: 'Capta video e imágenes.', rel: 'Envía flujo visual al procesador.', clasif: 'Periférico Entrada' },
+                    { name: 'Escáner', func: 'Digitaliza documentos físicos.', rel: 'Transfiere archivo al Sistema Operativo.', clasif: 'Periférico Entrada' }
+                ]
+            },
+            salida: {
+                color: '#ec4899',
+                nodes: [
+                    { name: 'Monitor', func: 'Muestra interfaz gráfica visualmente.', rel: 'Recibe video de GPU/Placa base.', clasif: 'Periférico Salida' },
+                    { name: 'Impresora', func: 'Plasma información digital en papel.', rel: 'Recibe datos del Sistema Operativo.', clasif: 'Periférico Salida' },
+                    { name: 'Parlantes', func: 'Reproducen sonido del equipo.', rel: 'Reciben señal de tarjeta de audio.', clasif: 'Periférico Salida' },
+                    { name: 'Proyector', func: 'Proyecta imagen en gran tamaño.', rel: 'Recibe señal de video de la GPU.', clasif: 'Periférico Salida' }
+                ]
+            },
+            mixtos: {
+                color: '#ec4899',
+                nodes: [
+                    { name: 'Pantalla Táctil', func: 'Muestra imagen y permite interacción.', rel: 'Combina monitor y ratón.', clasif: 'Periférico Mixto' },
+                    { name: 'Almacenamiento Ext.', func: 'Guarda (salida) y entrega (entrada) datos.', rel: 'Intercambia con RAM por USB.', clasif: 'Periférico Mixto' },
+                    { name: 'Tarjeta de Red', func: 'Transmite y recibe datos en red.', rel: 'Interactúa con SO y otros equipos.', clasif: 'Periférico Mixto' }
+                ]
+            },
+            comunicacion: {
+                color: '#6366f1',
+                nodes: [
+                    { name: 'Tarjeta Ethernet', func: 'Conexión cableada a red local.', rel: 'Transfiere paquetes al router.', clasif: 'Comunicación Cableada' },
+                    { name: 'Wi-Fi', func: 'Conexión inalámbrica a internet.', rel: 'Gestionado por controlador del SO.', clasif: 'Comunicación Inalámbrica' },
+                    { name: 'Bluetooth', func: 'Conexión inalámbrica corto alcance.', rel: 'Enlaza mouse, audífonos con SO.', clasif: 'Comunicación Corto Alcance' }
+                ]
+            },
+            alimentacion: {
+                color: '#64748b',
+                nodes: [
+                    { name: 'Fuente de Poder', func: 'Convierte y distribuye corriente eléctrica.', rel: 'Alimenta motherboard, discos, CPU.', clasif: 'Suministro Eléctrico' },
+                    { name: 'Refrigeración', func: 'Disipa el calor generado.', rel: 'Protege CPU y chasis térmicamente.', clasif: 'Protección Térmica' },
+                    { name: 'Gabinete', func: 'Aloja y protege componentes.', rel: 'Contiene mecánicamente el sistema.', clasif: 'Estructura' }
+                ]
+            },
+            software: {
+                color: '#a855f7',
+                nodes: [
+                    { name: 'Sistema Operativo', func: 'Administra recursos de hardware.', rel: 'Intermediario hardware-aplicaciones.', clasif: 'Software de Sistema' },
+                    { name: 'Aplicaciones', func: 'Programas para tareas específicas.', rel: 'Se ejecutan sobre el Sistema Operativo.', clasif: 'Software de Usuario' },
+                    { name: 'Controladores', func: 'Traducen órdenes del SO al dispositivo.', rel: 'Enlace entre hardware y Sistema Op.', clasif: 'Software Controlador' }
+                ]
+            }
+        };
+
+        // Render Function
+        function renderCards(gridId, dataArray, borderColor) {
+            const grid = document.getElementById(gridId);
+            dataArray.forEach(node => {
+                const card = document.createElement('div');
+                card.className = 'component-card';
+                card.style.borderColor = borderColor;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold text-[13px] text-white leading-tight">${node.name}</h4>
+                    </div>
+                    <span class="text-[9px] text-slate-400 uppercase font-bold tracking-wider mt-1 block" style="color: ${borderColor}">${node.clasif}</span>
+                    <div class="mt-2 space-y-1.5">
+                        <p class="text-[11px] text-slate-300 leading-tight"><strong class="text-white">F:</strong> ${node.func}</p>
+                        <p class="text-[11px] text-slate-400 leading-tight"><strong class="text-white">R:</strong> ${node.rel}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize Render
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCards('grid-procesamiento', mapData.procesamiento.nodes, mapData.procesamiento.color);
+            renderCards('grid-memoria', mapData.memoria.nodes, mapData.memoria.color);
+            renderCards('grid-almacenamiento', mapData.almacenamiento.nodes, mapData.almacenamiento.color);
+            renderCards('grid-placabase', mapData.placabase.nodes, mapData.placabase.color);
+            renderCards('grid-entrada', mapData.entrada.nodes, mapData.entrada.color);
+            renderCards('grid-salida', mapData.salida.nodes, mapData.salida.color);
+            renderCards('grid-mixtos', mapData.mixtos.nodes, mapData.mixtos.color);
+            renderCards('grid-comunicacion', mapData.comunicacion.nodes, mapData.comunicacion.color);
+            renderCards('grid-alimentacion', mapData.alimentacion.nodes, mapData.alimentacion.color);
+            renderCards('grid-software', mapData.software.nodes, mapData.software.color);
+            
+            // Initial positioning
+            resetView();
+        });
+
+        // Pan and Zoom Logic
+        const container = document.getElementById('canvas-container');
+        const wrapper = document.getElementById('map-wrapper');
+        
+        let scale = 0.8; // Start slightly zoomed out
+        let isDragging = false;
+        let startX, startY, translateX, translateY;
+
+        function updateTransform() {
+            wrapper.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        function zoom(delta) {
+            scale += delta;
+            if (scale < 0.2) scale = 0.2;
+            if (scale > 2) scale = 2;
+            updateTransform();
+        }
+
+        function resetView() {
+            scale = 0.8;
+            // Calculate center
+            const containerWidth = container.clientWidth;
+            const wrapperWidth = wrapper.scrollWidth * scale;
+            translateX = (containerWidth - wrapperWidth) / 2;
+            
+            // Adjust to align the top properly
+            translateY = 50; 
+            updateTransform();
+        }
+
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        // Scroll to zoom
+        container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.05 : 0.05;
+            zoom(delta);
+        }, { passive: false });
+
+    </script>
+</body>
+</html>
