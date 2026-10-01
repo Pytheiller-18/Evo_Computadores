@@ -229,7 +229,7 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding: 26px 12px 0 12px;
+            padding: 26px 14px 0 14px;
         }
 
         /* Barra horizontal continua de conexión entre hermanos */
@@ -343,7 +343,7 @@
             letter-spacing: 0.02em;
         }
 
-        /* ── CADENA VERTICAL DE TARJETAS LIMPIAS ──────────────── */
+        /* ── CADENA VERTICAL DE TARJETAS ─────────────────────── */
         .card-stack {
             display: flex;
             flex-direction: column;
@@ -379,29 +379,51 @@
             box-shadow: 0 0 6px var(--link-color, #38bdf8);
         }
 
-        /* ── TARJETA COMPACTA Y ELEGANTE (SIN CARGA VISUAL) ──── */
+        /* ── TARJETA INTERACTIVA ENCOGIBLE QUE ABRE AL PASAR EL MOUSE ── */
+        .card-slot {
+            position: relative;
+            width: 250px;
+            min-height: 42px;
+            display: flex;
+            justify-content: center;
+        }
+
         .node-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
             background: #1e293b;
             border: 1px solid #334155;
             border-left: 4px solid var(--card-color, #38bdf8);
-            padding: 9px 12px;
+            padding: 10px 14px;
             border-radius: 0 8px 8px 0;
-            width: 100%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            text-align: left;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 20;
+            overflow: hidden;
             cursor: pointer;
+            text-align: left;
+        }
+
+        /* Expansión flotante suave al pasar el mouse (:hover) */
+        .node-card:hover {
+            z-index: 100;
+            width: 300px;
+            left: -25px; /* Se centra elegantemente hacia los lados al abrirse */
+            border-radius: 12px;
+            border-color: var(--card-color, #38bdf8);
+            background: #0f172a;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.85), 0 0 22px var(--card-color-alpha, rgba(56, 189, 248, 0.25));
+        }
+
+        /* Cabecera compacta visible siempre */
+        .node-card-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 8px;
-        }
-        .node-card:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 12px var(--card-color-alpha, rgba(56, 189, 248, 0.25));
-            border-color: var(--card-color, #38bdf8);
-            background: #243248;
+            min-height: 20px;
         }
 
         .node-card-name {
@@ -411,21 +433,70 @@
             line-height: 1.35;
         }
 
-        .node-card-btn-hint {
+        .node-card-arrow {
             font-size: 10px;
             color: #64748b;
-            display: inline-flex;
-            align-items: center;
-            gap: 3px;
-            white-space: nowrap;
+            transition: transform 0.28s, color 0.2s;
             flex-shrink: 0;
-            transition: color 0.18s;
         }
-        .node-card:hover .node-card-btn-hint {
+
+        .node-card:hover .node-card-arrow {
+            transform: rotate(180deg);
             color: var(--card-color, #38bdf8);
         }
 
-        /* ── MODAL DE DETALLES PROFUNDOS (AL HACER CLIC) ──────── */
+        /* Cajón de información oculta que se abre al hover */
+        .node-card-drawer {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            transition: max-height 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease, margin-top 0.28s ease;
+            pointer-events: none;
+            font-size: 11px;
+            line-height: 1.45;
+        }
+
+        /* Despliegue automático de la información en hover */
+        .node-card:hover .node-card-drawer {
+            max-height: 380px;
+            opacity: 1;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid #334155;
+            pointer-events: auto;
+        }
+
+        .drawer-meaning {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-bottom: 8px;
+            font-size: 11px;
+            color: #7dd3fc;
+            line-height: 1.4;
+        }
+
+        .drawer-f {
+            font-size: 11px;
+            color: #cbd5e1;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .drawer-r {
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        /* ── MODAL PARA DISPOSITIVOS TÁCTILES ─────────────────── */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -579,8 +650,8 @@
                 <span style="width:9px; height:9px; border-radius:50%; background:#c084fc;"></span>
                 <span><strong>Software:</strong> Capas lógicas y programas.</span>
             </div>
-            <div style="margin-top:4px; font-size:10px; color:#38bdf8;">
-                <i class="fas fa-hand-pointer mr-1"></i> <em>Haz clic en cualquier tarjeta del mapa para ver sus detalles.</em>
+            <div style="margin-top:6px; font-size:10px; color:#38bdf8;">
+                <i class="fas fa-mouse-pointer mr-1"></i> <em>Pasa el mouse sobre cualquier tarjeta para desplegar sus detalles.</em>
             </div>
         </div>
     </div>
@@ -613,7 +684,7 @@
     </div>
 </div>
 
-<!-- ══ MODAL DE DETALLES PROFUNDOS (INTERACTIVO AL HACER CLIC) ════════════ -->
+<!-- ══ MODAL DE DETALLES PROFUNDOS (PARA DISPOSITIVOS TÁCTILES) ═══════════ -->
 <div id="detail-modal" class="modal-overlay" onclick="handleBackdropClick(event)">
     <div class="modal-box" id="modal-box">
         <button class="modal-close-btn" onclick="closeDetailModal()">
@@ -1016,7 +1087,7 @@ const mapData = {
 };
 
 /* ═══════════════════════════════════════════════════
-   REGISTRO GLOBAL DE NODOS PARA EL MODAL
+   REGISTRO GLOBAL DE NODOS PARA DISPOSITIVOS TÁCTILES
 ═══════════════════════════════════════════════════ */
 const nodeRegistry = {};
 
@@ -1033,14 +1104,29 @@ function buildComponentCard(node, color, branchName, categoryTitle) {
     };
 
     return `
-        <div class="node-card" 
-             style="--card-color: ${color}; --card-color-alpha: ${color}35;" 
-             onclick="openDetailModal('${nodeId}')"
-             title="Clic para ver detalles de ${node.name}">
-            <div class="node-card-name">${node.name}</div>
-            <div class="node-card-btn-hint">
-                <i class="fas fa-info-circle text-xs"></i>
-                <span>ver</span>
+        <div class="card-slot">
+            <div class="node-card" 
+                 style="--card-color: ${color}; --card-color-alpha: ${color}35;" 
+                 onclick="handleCardClick('${nodeId}')">
+                <div class="node-card-header">
+                    <span class="node-card-name">${node.name}</span>
+                    <i class="fas fa-chevron-down node-card-arrow"></i>
+                </div>
+                <div class="node-card-drawer">
+                    ${node.meaning ? `
+                        <div class="drawer-meaning">
+                            <i class="fas fa-lightbulb mr-1 opacity-80"></i>${node.meaning}
+                        </div>` : ''
+                    }
+                    <div class="drawer-f">
+                        <span class="badge-pill badge-pill-f">F</span>
+                        <span>${node.func}</span>
+                    </div>
+                    <div class="drawer-r">
+                        <span class="badge-pill badge-pill-r">R</span>
+                        <span>${node.rel}</span>
+                    </div>
+                </div>
             </div>
         </div>`;
 }
@@ -1081,7 +1167,7 @@ function buildCategoryColumn(cat, branchName) {
             <!-- Conector hacia las tarjetas -->
             <div class="tree-line-v" style="height: 16px; background:${cat.color}; opacity:0.6;"></div>
 
-            <!-- Pila de tarjetas limpias -->
+            <!-- Pila de tarjetas limpias e interactivas -->
             ${buildCardsStack(cat.nodes, cat.color, branchName, cat.title)}
         </div>`;
 }
@@ -1144,7 +1230,7 @@ function renderConceptMap() {
 }
 
 /* ═══════════════════════════════════════════════════
-   CONTROL DEL MODAL DE DETALLES
+   CONTROL DE EVENTOS TÁCTILES / MODAL
 ═══════════════════════════════════════════════════ */
 const modalOverlay     = document.getElementById('detail-modal');
 const modalTitle       = document.getElementById('modal-title');
@@ -1153,6 +1239,13 @@ const modalMeaningBox  = document.getElementById('modal-meaning-box');
 const modalMeaningText = document.getElementById('modal-meaning-text');
 const modalFuncText    = document.getElementById('modal-func-text');
 const modalRelText     = document.getElementById('modal-rel-text');
+
+function handleCardClick(nodeId) {
+    // Si la pantalla es táctil o dispositivo móvil pequeño, abrir modal al tocar
+    if (window.matchMedia('(hover: none)').matches || window.innerWidth < 768) {
+        openDetailModal(nodeId);
+    }
+}
 
 function openDetailModal(nodeId) {
     const data = nodeRegistry[nodeId];
@@ -1187,7 +1280,6 @@ function handleBackdropClick(e) {
     }
 }
 
-// Cerrar con la tecla Escape
 window.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
         closeDetailModal();
@@ -1235,7 +1327,6 @@ function resetView() {
 
 /* ── Arrastre con ratón ─────────────────── */
 container.addEventListener('mousedown', e => {
-    // Si se hace clic dentro del modal, no arrastrar
     if (e.target.closest('#detail-modal')) return;
     if (e.button !== 0) return;
     isDragging = true;
